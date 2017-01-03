@@ -17,6 +17,8 @@ int main(void)
 {
     
     menu1();
+//    menu2();
+//    menu3();
     return 0;
 }
 
