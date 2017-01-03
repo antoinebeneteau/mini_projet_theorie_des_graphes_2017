@@ -1,0 +1,25 @@
+Sommets
+10
+Sommets + valeur
+A 7
+B 3
+C 1
+D 8
+E 2
+F 1
+G 1
+H 3
+I 2
+J 1
+Sommets + contraintes
+A
+B A
+C B
+D A
+E CD
+F CD
+G CD
+H F
+I H
+J EGI
+Fin

@@ -1,0 +1,23 @@
+Sommets
+9
+Sommets + valeur
+A 2
+B 4
+C 4
+D 2
+E 3
+F 3
+G 1
+H 1
+I 2
+Sommets + contraintes
+A D
+B A
+C
+D ABCH
+E D
+F HIDE
+G EDH
+H D
+I DEF
+Fin

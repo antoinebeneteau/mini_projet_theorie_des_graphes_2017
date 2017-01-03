@@ -1,0 +1,15 @@
+Sommets
+5
+Sommets + valeur
+A 15
+B 3
+C 7
+D 25
+E 8
+Sommets + contraintes
+A
+B A
+C A
+D BC
+E CD
+Fin

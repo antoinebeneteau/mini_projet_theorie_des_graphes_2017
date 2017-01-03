@@ -1,0 +1,21 @@
+Sommets
+8
+Sommets + valeur
+A 1
+B 2
+C 3
+D 4
+E 5
+F 6
+G 7
+H 8
+Sommets + contraintes
+A
+B AE
+C H
+D BF
+E
+F AE
+G H
+H D
+Fin

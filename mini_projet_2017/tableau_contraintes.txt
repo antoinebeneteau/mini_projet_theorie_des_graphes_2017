@@ -1,0 +1,19 @@
+Sommets
+7
+Sommets + valeur
+A 2
+B 1
+C 4
+D 3
+E 1
+F 8
+G 3
+Sommets + contraintes
+A
+B
+C AD
+D AB
+E CD
+F E
+G BE
+Fin

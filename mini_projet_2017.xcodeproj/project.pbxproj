@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		000093701E1B20EE00A2635C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0000936F1E1B20EE00A2635C /* main.cpp */; };
+		009CF0441E1BDD61004B64BD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 009CF0431E1BDD61004B64BD /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +24,13 @@
 
 /* Begin PBXFileReference section */
 		0000936C1E1B20EE00A2635C /* mini_projet_2017 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = mini_projet_2017; sourceTree = BUILT_PRODUCTS_DIR; };
-		0000936F1E1B20EE00A2635C /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		009CF0431E1BDD61004B64BD /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../main.cpp; sourceTree = "<group>"; };
+		009CF0451E1BDD9A004B64BD /* tableau_contraintes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = tableau_contraintes.txt; sourceTree = "<group>"; };
+		009CF0461E1BDD9A004B64BD /* tableau_contraintes1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = tableau_contraintes1.txt; sourceTree = "<group>"; };
+		009CF0471E1BDD9A004B64BD /* tableau_contraintes2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = tableau_contraintes2.txt; sourceTree = "<group>"; };
+		009CF0481E1BDD9A004B64BD /* tableau_contraintes3.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = tableau_contraintes3.txt; sourceTree = "<group>"; };
+		009CF0491E1BDD9A004B64BD /* tableau_contraintes4.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = tableau_contraintes4.txt; sourceTree = "<group>"; };
+		009CF04A1E1BDD9A004B64BD /* tableau_contraintes5.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = tableau_contraintes5.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +63,23 @@
 		0000936E1E1B20EE00A2635C /* mini_projet_2017 */ = {
 			isa = PBXGroup;
 			children = (
-				0000936F1E1B20EE00A2635C /* main.cpp */,
+				009CF0431E1BDD61004B64BD /* main.cpp */,
+				009CF04B1E1BDDAA004B64BD /* Tableaux */,
 			);
 			path = mini_projet_2017;
+			sourceTree = "<group>";
+		};
+		009CF04B1E1BDDAA004B64BD /* Tableaux */ = {
+			isa = PBXGroup;
+			children = (
+				009CF0451E1BDD9A004B64BD /* tableau_contraintes.txt */,
+				009CF0461E1BDD9A004B64BD /* tableau_contraintes1.txt */,
+				009CF0471E1BDD9A004B64BD /* tableau_contraintes2.txt */,
+				009CF0481E1BDD9A004B64BD /* tableau_contraintes3.txt */,
+				009CF0491E1BDD9A004B64BD /* tableau_contraintes4.txt */,
+				009CF04A1E1BDD9A004B64BD /* tableau_contraintes5.txt */,
+			);
+			name = Tableaux;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -120,7 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				000093701E1B20EE00A2635C /* main.cpp in Sources */,
+				009CF0441E1BDD61004B64BD /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
