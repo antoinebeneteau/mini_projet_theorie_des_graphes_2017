@@ -1,12 +1,12 @@
-Sommets
+Sommets:
 5
-Sommets + valeur
+Durées:
 A 15
 B 3
 C 7
 D 25
 E 8
-Sommets + contraintes
+Contraintes:
 A
 B A
 C A

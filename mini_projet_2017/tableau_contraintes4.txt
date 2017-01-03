@@ -1,6 +1,6 @@
-Sommets
+Sommets:
 10
-Sommets + valeur
+Durées:
 A 7
 B 3
 C 1
@@ -11,7 +11,7 @@ G 1
 H 3
 I 2
 J 1
-Sommets + contraintes
+Contraintes:
 A
 B A
 C B
