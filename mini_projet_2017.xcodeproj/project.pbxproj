@@ -31,6 +31,14 @@
 		009CF0481E1BDD9A004B64BD /* tableau_contraintes3.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = tableau_contraintes3.txt; sourceTree = "<group>"; };
 		009CF0491E1BDD9A004B64BD /* tableau_contraintes4.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = tableau_contraintes4.txt; sourceTree = "<group>"; };
 		009CF04A1E1BDD9A004B64BD /* tableau_contraintes5.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = tableau_contraintes5.txt; sourceTree = "<group>"; };
+		B59195261E1BE17D00CCD5CE /* benmamar-samba-yousfi-test1-resultat.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "benmamar-samba-yousfi-test1-resultat.txt"; path = "../../../MiniProjetK/benmamar-samba-yousfi-test1-resultat.txt"; sourceTree = "<group>"; };
+		B59195271E1BE17D00CCD5CE /* benmamar-samba-yousfi-test1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "benmamar-samba-yousfi-test1.txt"; path = "../../../MiniProjetK/benmamar-samba-yousfi-test1.txt"; sourceTree = "<group>"; };
+		B59195281E1BE17D00CCD5CE /* benmamar-samba-yousfi-test2-resultat.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "benmamar-samba-yousfi-test2-resultat.txt"; path = "../../../MiniProjetK/benmamar-samba-yousfi-test2-resultat.txt"; sourceTree = "<group>"; };
+		B59195291E1BE17D00CCD5CE /* benmamar-samba-yousfi-test2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "benmamar-samba-yousfi-test2.txt"; path = "../../../MiniProjetK/benmamar-samba-yousfi-test2.txt"; sourceTree = "<group>"; };
+		B591952A1E1BE17D00CCD5CE /* benmamar-samba-yousfi-test3-resultat.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "benmamar-samba-yousfi-test3-resultat.txt"; path = "../../../MiniProjetK/benmamar-samba-yousfi-test3-resultat.txt"; sourceTree = "<group>"; };
+		B591952B1E1BE17D00CCD5CE /* benmamar-samba-yousfi-test3.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "benmamar-samba-yousfi-test3.txt"; path = "../../../MiniProjetK/benmamar-samba-yousfi-test3.txt"; sourceTree = "<group>"; };
+		B591952C1E1BE17D00CCD5CE /* benmamar-samba-yousfi-test4-resultat.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "benmamar-samba-yousfi-test4-resultat.txt"; path = "../../../MiniProjetK/benmamar-samba-yousfi-test4-resultat.txt"; sourceTree = "<group>"; };
+		B591952D1E1BE17D00CCD5CE /* benmamar-samba-yousfi-test4.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "benmamar-samba-yousfi-test4.txt"; path = "../../../MiniProjetK/benmamar-samba-yousfi-test4.txt"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +80,14 @@
 		009CF04B1E1BDDAA004B64BD /* Tableaux */ = {
 			isa = PBXGroup;
 			children = (
+				B59195261E1BE17D00CCD5CE /* benmamar-samba-yousfi-test1-resultat.txt */,
+				B59195271E1BE17D00CCD5CE /* benmamar-samba-yousfi-test1.txt */,
+				B59195281E1BE17D00CCD5CE /* benmamar-samba-yousfi-test2-resultat.txt */,
+				B59195291E1BE17D00CCD5CE /* benmamar-samba-yousfi-test2.txt */,
+				B591952A1E1BE17D00CCD5CE /* benmamar-samba-yousfi-test3-resultat.txt */,
+				B591952B1E1BE17D00CCD5CE /* benmamar-samba-yousfi-test3.txt */,
+				B591952C1E1BE17D00CCD5CE /* benmamar-samba-yousfi-test4-resultat.txt */,
+				B591952D1E1BE17D00CCD5CE /* benmamar-samba-yousfi-test4.txt */,
 				009CF0451E1BDD9A004B64BD /* tableau_contraintes.txt */,
 				009CF0461E1BDD9A004B64BD /* tableau_contraintes1.txt */,
 				009CF0471E1BDD9A004B64BD /* tableau_contraintes2.txt */,
