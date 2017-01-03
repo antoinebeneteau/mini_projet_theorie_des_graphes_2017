@@ -16,6 +16,7 @@
 int main(void)
 {
     
+    menu1();
     return 0;
 }
 

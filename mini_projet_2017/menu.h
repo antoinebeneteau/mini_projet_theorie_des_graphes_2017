@@ -11,7 +11,8 @@
 
 #include <stdio.h>
 
-
-
+int menu1();
+int menu2();
+int menu3();
 
 #endif /* menu_h */
