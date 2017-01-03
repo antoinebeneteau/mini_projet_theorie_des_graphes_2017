@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0095E40C1E1BE27D004DBABA /* graphe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0095E40A1E1BE27D004DBABA /* graphe.cpp */; };
+		0095E40F1E1BE28E004DBABA /* menu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0095E40D1E1BE28E004DBABA /* menu.cpp */; };
+		0095E4121E1BE2B0004DBABA /* utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0095E4101E1BE2B0004DBABA /* utils.cpp */; };
 		009CF0441E1BDD61004B64BD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 009CF0431E1BDD61004B64BD /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +27,12 @@
 
 /* Begin PBXFileReference section */
 		0000936C1E1B20EE00A2635C /* mini_projet_2017 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = mini_projet_2017; sourceTree = BUILT_PRODUCTS_DIR; };
+		0095E40A1E1BE27D004DBABA /* graphe.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = graphe.cpp; sourceTree = "<group>"; };
+		0095E40B1E1BE27D004DBABA /* graphe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = graphe.h; sourceTree = "<group>"; };
+		0095E40D1E1BE28E004DBABA /* menu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = menu.cpp; sourceTree = "<group>"; };
+		0095E40E1E1BE28E004DBABA /* menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = menu.h; sourceTree = "<group>"; };
+		0095E4101E1BE2B0004DBABA /* utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = utils.cpp; sourceTree = "<group>"; };
+		0095E4111E1BE2B0004DBABA /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
 		009CF0431E1BDD61004B64BD /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../main.cpp; sourceTree = "<group>"; };
 		009CF0451E1BDD9A004B64BD /* tableau_contraintes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = tableau_contraintes.txt; sourceTree = "<group>"; };
 		009CF0461E1BDD9A004B64BD /* tableau_contraintes1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = tableau_contraintes1.txt; sourceTree = "<group>"; };
@@ -64,6 +73,12 @@
 			isa = PBXGroup;
 			children = (
 				009CF0431E1BDD61004B64BD /* main.cpp */,
+				0095E40A1E1BE27D004DBABA /* graphe.cpp */,
+				0095E40B1E1BE27D004DBABA /* graphe.h */,
+				0095E40D1E1BE28E004DBABA /* menu.cpp */,
+				0095E40E1E1BE28E004DBABA /* menu.h */,
+				0095E4101E1BE2B0004DBABA /* utils.cpp */,
+				0095E4111E1BE2B0004DBABA /* utils.h */,
 				009CF04B1E1BDDAA004B64BD /* Tableaux */,
 			);
 			path = mini_projet_2017;
@@ -140,7 +155,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0095E40C1E1BE27D004DBABA /* graphe.cpp in Sources */,
 				009CF0441E1BDD61004B64BD /* main.cpp in Sources */,
+				0095E40F1E1BE28E004DBABA /* menu.cpp in Sources */,
+				0095E4121E1BE2B0004DBABA /* utils.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
