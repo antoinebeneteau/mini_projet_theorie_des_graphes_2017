@@ -19,12 +19,26 @@
 #include <algorithm>
 #include <iomanip>
 
+#include "graphe.h"
+
 using namespace std;
 
 
 // String -> Int
 int convStringVersInt(string flux);
 void Pause();
+
+void affichageListeTaches(Graphe g);
+void affichageListeContraintes(Graphe g);
+void affichageListeSuccesseurs(Graphe g);
+void affichageListeArcs(Graphe g);
+void affichageMatriceAdjacence(Graphe g);
+void affichageMatriceValeur(Graphe g);
+void affichageMatriceTransitive(Graphe g);
+void affichageRangsSommets(Graphe g);
+void affichageTableauDates(Graphe g);
+void affichageDiagrammeGanttCalendrierPlusTot(Graphe g);
+void affichageDiagrammeGanttCalendrierPlusTard(Graphe g);
 
 
 #endif /* utils_h */

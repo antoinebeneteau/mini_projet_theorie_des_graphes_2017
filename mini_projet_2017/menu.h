@@ -13,6 +13,6 @@
 
 int menu1();
 int menu2();
-int menu3();
+int menu3(bool circuit);
 
 #endif /* menu_h */

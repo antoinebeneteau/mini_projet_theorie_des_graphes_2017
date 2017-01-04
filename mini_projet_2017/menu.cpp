@@ -83,7 +83,7 @@ int menu3(bool circuit) {
     
     if (!circuit) {
         cout << "|-------------------------------------------------------------------------------|" << endl;
-        cout << "|  Le graghe a un circuit, nous pouvons donc effectuer ces operations !         |" << endl;
+        cout << "|  Le graghe n'a pas circuit (Pas fait)                                         |" << endl;
         cout << "|-------------------------------------------------------------------------------|" << endl;
         cout << "|  8 - Afficher le rang de chaques sommets                                      |" << endl;
         cout << "|  9 - Afficher les dates au plus tôt et au plus tard de chaque sommet          |" << endl;

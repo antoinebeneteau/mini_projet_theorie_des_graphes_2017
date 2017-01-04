@@ -12,9 +12,23 @@
 #include "utils.h"
 
 
-
 int main(void)
 {
+    map<int, string> fichiers;
+    map<int, string> fichiers_R;
+    
+    fichiers[1] = "/Users/antoinebeneteau/Documents/mini_projet_2017/mini_projet_2017/tableau_contraintes1.txt";
+    fichiers[2] = "/Users/antoinebeneteau/Documents/mini_projet_2017/mini_projet_2017/tableau_contraintes2.txt";
+    fichiers[3] = "/Users/antoinebeneteau/Documents/mini_projet_2017/mini_projet_2017/tableau_contraintes3.txt";
+    fichiers[4] = "/Users/antoinebeneteau/Documents/mini_projet_2017/mini_projet_2017/tableau_contraintes4.txt";
+    fichiers[5] = "/Users/antoinebeneteau/Documents/mini_projet_2017/mini_projet_2017/tableau_contraintes5.txt";
+    
+    fichiers_R[1] = "/Users/antoinebeneteau/Documents/mini_projet_2017/mini_projet_2017/tableau_contraintes1_R.txt";
+    fichiers_R[2] = "/Users/antoinebeneteau/Documents/mini_projet_2017/mini_projet_2017/tableau_contraintes2_R.txt";
+    fichiers_R[3] = "/Users/antoinebeneteau/Documents/mini_projet_2017/mini_projet_2017/tableau_contraintes3_R.txt";
+    fichiers_R[4] = "/Users/antoinebeneteau/Documents/mini_projet_2017/mini_projet_2017/tableau_contraintes4_R.txt";
+    fichiers_R[5] = "/Users/antoinebeneteau/Documents/mini_projet_2017/mini_projet_2017/tableau_contraintes5_R.txt";
+
     
     int choix = 0, fichier_choisi = 0, option = 0;
     bool check = false;
@@ -28,60 +42,85 @@ int main(void)
         if (choix == 1) {
             choix = menu2();
             
-            switch (choix) {
-                case 0:
-                    
-                    break;
-                case 1:
-                    nom_fichier = "/Users/antoinebeneteau/Documents/mini_projet_2017/mini_projet_2017/tableau_contraintes1.txt";
-                    nom_fichier_resultat = "/Users/antoinebeneteau/Documents/mini_projet_2017/mini_projet_2017/tableau_contraintes1_R.txt";
-                    break;
-                case 2:
-                    nom_fichier = "/Users/antoinebeneteau/Documents/mini_projet_2017/mini_projet_2017/tableau_contraintes2.txt";
-                    nom_fichier_resultat = "tableau_contraintes2_R.txt";
-                    break;
-                case 3:
-                    nom_fichier = "/Users/antoinebeneteau/Documents/mini_projet_2017/mini_projet_2017/tableau_contraintes3.txt";
-                    nom_fichier_resultat = "/Users/antoinebeneteau/Documents/mini_projet_2017/mini_projet_2017/tableau_contraintes3_R.txt";
-                    break;
-                case 4:
-                    nom_fichier = "/Users/antoinebeneteau/Documents/mini_projet_2017/mini_projet_2017/tableau_contraintes4.txt";
-                    nom_fichier_resultat = "/Users/antoinebeneteau/Documents/mini_projet_2017/mini_projet_2017/tableau_contraintes4_R.txt";
-                    break;
-                case 5:
-                    nom_fichier = "/Users/antoinebeneteau/Documents/mini_projet_2017/mini_projet_2017/tableau_contraintes5.txt";
-                    nom_fichier_resultat = "/Users/antoinebeneteau/Documents/mini_projet_2017/mini_projet_2017/tableau_contraintes5_R.txt";
-                    break;
-                    
-                default:
-                    break;
-            }
+            nom_fichier = fichiers[choix];
+            nom_fichier_resultat = fichiers_R[choix];
             
             ofstream fichier_resultat(nom_fichier_resultat.c_str(), ios::trunc);
             
-            cout << "Generation du graphe" << endl;
-            
             Pause();
             
-            Graphe G1(nom_fichier);
+            Graphe graphe(nom_fichier);
             
-            if (G1.lectureFichierAvecContraintes(nom_fichier, fichier_resultat))
+            bool fichierOK = graphe.lectureFichierAvecContraintes(nom_fichier, fichier_resultat);
+            
+            if (fichierOK)
             {
                 Pause();
-                G1.creationGrapheOrdonnancement(fichier_resultat);
+                graphe.creationGrapheOrdonnancement(fichier_resultat);
                 Pause();
-                G1.ajoutSommetsIncidents(fichier_resultat);
+                graphe.ajoutSommetsIncidents(fichier_resultat);
                 Pause();
-                G1.definitionMatrices(fichier_resultat);
+                graphe.definitionMatrices(fichier_resultat);
                 Pause();
-                G1.FermetureTransitiveMatrice(fichier_resultat);
+                graphe.FermetureTransitiveMatrice(fichier_resultat);
                 Pause();
                 
-            }
-            else
-            {
-                cout << ">>> ERREUR: Impossible d'initialiser la liste des sommets avec ses contraintes !" << endl << endl;
-                Pause();
+                bool circuit = graphe.detectionCircuit(fichier_resultat);
+                if (!circuit) {
+                    Pause();
+                    graphe.definitionRangsSommets(fichier_resultat);
+                    Pause();
+                    graphe.definitionCalendrierAuPlusTot(fichier_resultat);
+                    Pause();
+                    graphe.definitionCalendrierAuPlusTard(fichier_resultat);
+                    Pause();
+                }
+                
+                fichier_resultat << endl << ">>> Fin des résultats." << endl;
+                fichier_resultat.close();
+                
+                choix = 11111;
+                while (choix != 0) {
+                    choix = menu3(graphe.isCircuit());
+                    
+                    if (choix == 1) {
+                        // Affichage taches
+                        affichageListeTaches(graphe);
+                    } else if (choix == 2) {
+                        // Affichage contraintes
+                        affichageListeContraintes(graphe);
+                    } else if (choix == 3) {
+                        // Affichage successeur
+                        affichageListeSuccesseurs(graphe);
+                    } else if (choix == 4) {
+                        // Affichage arcs
+                        affichageListeArcs(graphe);
+                    } else if (choix == 5) {
+                        // Affichage Matrice adjacence
+                        affichageMatriceAdjacence(graphe);
+                    } else if (choix == 6) {
+                        // Affichage Matrice valeurs
+                        affichageMatriceValeur(graphe);
+                    } else if (choix == 7) {
+                        // Affichage Matrice puissance
+                        graphe.affichageMatriceAdjacencePuissance(graphe.getPuissance(), true, fichier_resultat);
+                    } else if (choix == 8) {
+                        // Affichage rangs sommet
+                        cout << "Pas fait" << endl;
+                    } else if (choix == 9) {
+                        // Affichage tableau dates
+                        cout << "Pas fait" << endl;
+                    } else if (choix == 10) {
+                        // Affichage  Diagramme gant calendrier plus tot
+                        cout << "Pas fait" << endl;
+                    } else if (choix == 11) {
+                        // Affichage  Diagramme gant calendrier plus tard
+                        cout << "Pas fait" << endl;
+                    }
+                }
+                
+            } else {
+                cout << ">>> Probleme de fichier !" << endl << endl;
             }
             
             

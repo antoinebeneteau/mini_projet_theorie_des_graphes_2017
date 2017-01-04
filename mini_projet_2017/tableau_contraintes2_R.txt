@@ -1,0 +1,166 @@
+Traces d'execution :
+
+Lecture du nombre de taches 5 sommets.
+Lecture des taches avec leurs durees respectives
+ Tache 1Sommet(s): A
+ Tache 2Sommet(s): B
+ Tache 3Sommet(s): C
+ Tache 4Sommet(s): D
+ Tache 5Sommet(s): E
+-> Lecture des contraintes
+ * Sommet A, aucune contrainte à ajouter.
+ Sommet B, ajout d'une contrainte... 
+ Ajout de la contrainte... A.
+
+ Sommet C, ajout d'une contrainte... 
+ Ajout de la contrainte... A.
+
+ * Sommet D, ajout de 2 contrainte(s)... 
+ Ajout de la contrainte... B.
+ Ajout de la contrainte... C.
+ * Sommet E, ajout de 2 contrainte(s)... 
+ Ajout de la contrainte... C.
+ Ajout de la contrainte... D.
+--> Création du graphe...
+--> Propriétés du graphe:
+ - Nombre de sommets: 7 (5 + 2 sommets incidents a et z)
+ - Graphe orienté.
+ - 1 valeur numérique (durée) pour chaque arc.
+ - Maximum 1 arc d'un sommet X vers un sommet Y donné.
+
+--> Création des arcs associés aux contraintes de type "X ne peut commencer lorsque la tâche Y est terminée"...
+ * A --[15]--> B
+ * A --[15]--> C
+ * B --[3]--> D
+ * C --[7]--> D
+ * C --[7]--> E
+ * D --[25]--> E
+-> Ajout des sommets incidents...
+ * Ajout de l'arc a --[15]--> A
+ * Ajout de l'arc E --[8]--> z
+-> Lecture des arcs et initialisation des matrices d'adjacence et des valeurs...
+ * Arc 1: A --[15]--> B
+   -> Passage a 1 dans la matrice d'adjacence, case[0][1]
+   -> Passage a 15 dans la matrice des valeurs, case[0][1]
+ * Arc 2: A --[15]--> C
+   -> Passage a 1 dans la matrice d'adjacence, case[0][2]
+   -> Passage a 15 dans la matrice des valeurs, case[0][2]
+ * Arc 3: B --[3]--> D
+   -> Passage a 1 dans la matrice d'adjacence, case[1][3]
+   -> Passage a 3 dans la matrice des valeurs, case[1][3]
+ * Arc 4: C --[7]--> D
+   -> Passage a 1 dans la matrice d'adjacence, case[2][3]
+   -> Passage a 7 dans la matrice des valeurs, case[2][3]
+ * Arc 5: C --[7]--> E
+   -> Passage a 1 dans la matrice d'adjacence, case[2][4]
+   -> Passage a 7 dans la matrice des valeurs, case[2][4]
+ * Arc 6: D --[25]--> E
+   -> Passage a 1 dans la matrice d'adjacence, case[3][4]
+   -> Passage a 25 dans la matrice des valeurs, case[3][4]
+ * Arc 7: a --[0]--> A
+   -> Passage a 1 dans la matrice d'adjacence, case[5][0]
+   -> Passage a 0 dans la matrice des valeurs, case[5][0]
+ * Arc 8: E --[8]--> z
+   -> Passage a 1 dans la matrice d'adjacence, case[4][6]
+   -> Passage a 8 dans la matrice des valeurs, case[4][6]
+-> Calcul de la matrice d'adjacence associée à sa fermeture transitive (7 sommets -> 5 puissances de 2 à 6)...
+
+ * Matrice d'adjacence M avant calcul de la fermeture transitive: 
+
+       0  1  1  0  0  0  0  
+       0  0  0  1  0  0  0  
+       0  0  0  1  1  0  0  
+M =    0  0  0  0  1  0  0  
+       0  0  0  0  0  0  1  
+       1  0  0  0  0  0  0  
+       0  0  0  0  0  0  0  
+
+ -> Itération 1: M^2 = M x M
+
+        0  1  1  1  1  0  0  
+        0  0  0  1  1  0  0  
+        0  0  0  1  1  0  1  
+M^2 =   0  0  0  0  1  0  1  
+        0  0  0  0  0  0  1  
+        1  1  1  0  0  0  0  
+        0  0  0  0  0  0  0  
+
+ -> Iteration 2: M^3 = M x M
+
+        0  1  1  1  1  0  1  
+        0  0  0  1  1  0  1  
+        0  0  0  1  1  0  1  
+M^3 =   0  0  0  0  1  0  1  
+        0  0  0  0  0  0  1  
+        1  1  1  1  1  0  1  
+        0  0  0  0  0  0  0  
+
+ -> Iteration 3: M^4 = M x M
+
+        0  1  1  1  1  0  1  
+        0  0  0  1  1  0  1  
+        0  0  0  1  1  0  1  
+M^4 =   0  0  0  0  1  0  1  
+        0  0  0  0  0  0  1  
+        1  1  1  1  1  0  1  
+        0  0  0  0  0  0  0  
+
+ -> Iteration 4: M^5 = M x M
+
+        0  1  1  1  1  0  1  
+        0  0  0  1  1  0  1  
+        0  0  0  1  1  0  1  
+M^5 =   0  0  0  0  1  0  1  
+        0  0  0  0  0  0  1  
+        1  1  1  1  1  0  1  
+        0  0  0  0  0  0  0  
+
+ -> Iteration 5: M^6 = M x M
+
+        0  1  1  1  1  0  1  
+        0  0  0  1  1  0  1  
+        0  0  0  1  1  0  1  
+M^6 =   0  0  0  0  1  0  1  
+        0  0  0  0  0  0  1  
+        1  1  1  1  1  0  1  
+        0  0  0  0  0  0  0  
+
+-> Détection de circuit dans le graphe...
+        0  1  1  1  1  0  1  
+        0  0  0  1  1  0  1  
+        0  0  0  1  1  0  1  
+M^6 =   0  0  0  0  1  0  1  
+        0  0  0  0  0  0  1  
+        1  1  1  1  1  0  1  
+        0  0  0  0  0  0  0  
+
+ -> Le graphe n'a pas de circuit (que des 0 dans la diagonale).
+
+>>> Le calcul du rang de chaque sommet est possible !
+
+-> Définition des rangs des sommets...
+ * Sommet : A  -> Rang attribué: 1
+ * Sommet : B  -> Rang attribué: 2
+ * Sommet : C  -> Rang attribué: 2
+ * Sommet : D  -> Rang attribué: 3
+ * Sommet : E  -> Rang attribué: 4
+ * Sommet : a  -> Rang attribué: 0
+ * Sommet : z  -> Rang attribué: 5
+-> Définition du calendrier au plus tôt...
+ * Sommet: A, Date au plus tôt attribuée: 0
+ * Sommet: B, Date au plus tôt attribuée: 15
+ * Sommet: C, Date au plus tôt attribuée: 15
+ * Sommet: D, Date au plus tôt attribuée: 22
+ * Sommet: E, Date au plus tôt attribuée: 47
+ * Sommet: a, Date au plus tôt attribuée: 0
+ * Sommet: z, Date au plus tôt attribuée: 55
+-> Définition du calendrier au plus tard...
+ * Sommet: A, Date au plus tard attribuée: 0
+ * Sommet: B, Date au plus tard attribuée: 19
+ * Sommet: C, Date au plus tard attribuée: 15
+ * Sommet: D, Date au plus tard attribuée: 22
+ * Sommet: E, Date au plus tard attribuée: 47
+ * Sommet: a, Date au plus tard attribuée: 0
+ * Sommet: z, Date au plus tard attribuée: 55
+
+>>> Fin des résultats.

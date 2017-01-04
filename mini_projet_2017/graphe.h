@@ -62,6 +62,10 @@ class Graphe
 {
 private:
     int taches;
+    int puissance_fermeture_transitive;
+    bool circuit;
+    
+    
     vector<string> tab_taches;
     vector<int> tab_durees;
     vector<Sommet> tab_sommets;
@@ -70,6 +74,10 @@ private:
     bool **matrice_adjacence;
     bool **matrice_transitive;
     int **matrice_valeurs;
+    
+    map<string, int> rangs_sommets;
+    map<string, int> dates_plus_tot;
+    map<string, int> dates_plus_tard;
     
 public:
     ~Graphe();
@@ -80,7 +88,19 @@ public:
     
     // GET
     int getNombreTaches() const;
+    vector<string> getTaches() const;
+    vector<Sommet> getSommets() const;
+    vector<Arc> getArcs() const;
+    vector<int> getDurees() const;
+    int getPuissance() const;
     int getDuree(int i) const;
+    bool isCircuit() const;
+    bool** getMatriceAdjacence() const;
+    int** getMatriceValeurs() const;
+    bool** getMatriceTransitive() const;
+    map<string, int> getRangsSommets() const;
+    map<string, int> getDateTot() const;
+    map<string, int> getDateTard() const;
     
     // SET
     void setNombreTaches(int taches);
@@ -95,6 +115,19 @@ public:
     void ajoutSommetsIncidents(ofstream& fichier_resultat);
     void definitionMatrices(ofstream& fichier_resultat);
     void FermetureTransitiveMatrice(ofstream& fichier_resultat);
+    bool detectionCircuit(ofstream& fichier_resultat);
+    
+    void definitionRangsSommets(ofstream& fichier_resultat);
+    int calculRecursifRangSommet(int position_sommet);
+    void definitionCalendrierAuPlusTard(ofstream& fichier_resultat);
+    void definitionCalendrierAuPlusTot(ofstream& fichier_resultat);
+    int calculRecursifDateAuPlusTard(int position_sommet);
+    int calculRecursifDateAuPlusTot(int position_sommet);
+    
+    
+    // Affichages
+    void affichageMatriceAdjacence() const;
+    void affichageMatriceAdjacencePuissance(int puissance, bool affichage, ofstream& fichier_resultat) const;
     
     
 };
