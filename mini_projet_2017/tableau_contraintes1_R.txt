@@ -1,4 +1,4 @@
-Traces d'execution du graphe: 
+Traces d'execution :
 
 -> Lecture du nombre de taches -> 7 sommets.
 -> Lecture des taches avec leurs durees respectives
