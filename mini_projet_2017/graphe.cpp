@@ -125,10 +125,10 @@ Graphe::Graphe(string nom_fichier)
             MATRICE ADJACENCE
             --------------------------------  */
         
-        matrice_adjacence = new bool * [nombre_taches]; // Allocation dynamique de la matrice de type bool (1ere dim)
+        matriceAdjacence = new bool * [nombre_taches]; // Allocation dynamique de la matrice de type bool (1ere dim)
         i = 0;
         do {
-            matrice_adjacence[i] = new bool[nombre_taches]; // Allocation dynamique de la matrice de type bool (2eme dim)
+            matriceAdjacence[i] = new bool[nombre_taches]; // Allocation dynamique de la matrice de type bool (2eme dim)
             i++;
         } while(i < nombre_taches);
         
@@ -137,7 +137,7 @@ Graphe::Graphe(string nom_fichier)
         {
             for (j = 0; j < nombre_taches; j++)
             {
-                matrice_adjacence[i][j] = false; // Initialisation de la matrice avec des 0
+                matriceAdjacence[i][j] = false; // Initialisation de la matrice avec des 0
             }
         }
         
@@ -145,10 +145,10 @@ Graphe::Graphe(string nom_fichier)
             MATRICE VALEURS
             --------------------------------  */
         
-        matrice_valeurs = new int * [nombre_taches]; // Allocation dynamique de la matrice de type int (1ere dim)
+        matriceValeurs = new int * [nombre_taches]; // Allocation dynamique de la matrice de type int (1ere dim)
         i = 0;
         do {
-            matrice_valeurs[i] = new int[nombre_taches]; // Allocation dynamique de la matrice de type int (2eme dim)
+            matriceValeurs[i] = new int[nombre_taches]; // Allocation dynamique de la matrice de type int (2eme dim)
             i++;
         } while(i < nombre_taches);
         
@@ -156,7 +156,7 @@ Graphe::Graphe(string nom_fichier)
         {
             for (j = 0; j < nombre_taches; j++)
             {
-                matrice_valeurs[i][j] = -1; // Initialisation de la matrice avec des -1
+                matriceValeurs[i][j] = -1; // Initialisation de la matrice avec des -1
             }
         }
         
@@ -165,10 +165,10 @@ Graphe::Graphe(string nom_fichier)
             MATRICE TRANSITIVE
             --------------------------------  */
         
-        matrice_transitive = new bool * [nombre_taches]; // Allocation dynamique de la matrice de type bool (1ere dim)
+        matriceTransitive = new bool * [nombre_taches]; // Allocation dynamique de la matrice de type bool (1ere dim)
         i = 0;
         do {
-            matrice_transitive[i] = new bool[nombre_taches]; // Allocation dynamique de la matrice de type bool (2eme dim)
+            matriceTransitive[i] = new bool[nombre_taches]; // Allocation dynamique de la matrice de type bool (2eme dim)
             i++;
         } while(i < nombre_taches);
         
@@ -176,7 +176,7 @@ Graphe::Graphe(string nom_fichier)
         {
             for (j = 0; j < nombre_taches; j++)
             {
-                matrice_transitive[i][j] = false; // Initialisation de la matrice avec des 0
+                matriceTransitive[i][j] = false; // Initialisation de la matrice avec des 0
             }
         }
     }
@@ -194,9 +194,9 @@ Graphe::~Graphe()
 //        --------------------------------  */
 //    for (int i = 0; i < taches; i++)
 //    {
-//        delete [] matrice_adjacence[i];
+//        delete [] matriceAdjacence[i];
 //    }
-//    delete [] matrice_adjacence;
+//    delete [] matriceAdjacence;
 //    
 //    
 //    
@@ -217,66 +217,66 @@ Graphe::~Graphe()
 //    
 //    for (int i = 0; i < taches; i++)
 //    {
-//        delete [] matrice_transitive[i];
+//        delete [] matriceTransitive[i];
 //    }
-//    delete [] matrice_transitive;
+//    delete [] matriceTransitive;
 }
 
 
-int Graphe::getNombreTaches() const {
+int Graphe::obtenirNombreTaches() const {
     return this->taches;
 }
 
 
-int Graphe::getDuree(int i) const {
-    return tab_durees[i];
+int Graphe::obtenirDuree(int i) const {
+    return tabDurees[i];
 }
 
-bool Graphe::isCircuit() const {
-    return this->circuit;
+bool Graphe::estCircuit() const {
+    return this->estUnCircuit;
 }
 
-int Graphe::getPuissance() const {
-    return this->puissance_fermeture_transitive;
+int Graphe::obtenirPuissance() const {
+    return this->puissance;
 }
 
-vector<string> Graphe::getTaches() const {
-    return this->tab_taches;
+vector<string> Graphe::obtenirTaches() const {
+    return this->tabTaches;
 }
 
-vector<Sommet> Graphe::getSommets() const {
-    return this->tab_sommets;
+vector<Sommet> Graphe::obtenirSommets() const {
+    return this->tabSommets;
 }
-vector<Arc> Graphe::getArcs() const {
-    return this->tab_arcs;
+vector<Arc> Graphe::obtenirArcs() const {
+    return this->tabArcs;
 }
-vector<int> Graphe::getDurees() const {
-    return this->tab_durees;
-}
-
-bool** Graphe::getMatriceAdjacence() const {
-    return this->matrice_adjacence;
+vector<int> Graphe::obtenirDurees() const {
+    return this->tabDurees;
 }
 
-int** Graphe::getMatriceValeurs() const {
-    return this->matrice_valeurs;
-}
-bool** Graphe::getMatriceTransitive() const {
-    return this->matrice_transitive;
+bool** Graphe::obtenirMatriceAdjacence() const {
+    return this->matriceAdjacence;
 }
 
-map<string, int> Graphe::getRangsSommets() const {
+int** Graphe::obtenirMatriceValeurs() const {
+    return this->matriceValeurs;
+}
+bool** Graphe::obtenirMatriceTransitive() const {
+    return this->matriceTransitive;
+}
+
+map<string, int> Graphe::obtenirRangsSommets() const {
     return this->rangs_sommets;
 }
-map<string, int> Graphe::getDateTot() const {
+map<string, int> Graphe::obtenirDateTot() const {
     return this->dates_plus_tot;
 }
-map<string, int> Graphe::getDateTard() const {
+map<string, int> Graphe::obtenirDateTard() const {
     return this->dates_plus_tard;
 }
 
 // SET
-void Graphe::setNombreTaches(int taches) {
+void Graphe::definirNombreTaches(int taches) {
     this->taches = taches;
 }
 
@@ -326,8 +326,8 @@ int Graphe::lectureFichierAvecContraintes(string nom_fichier, ofstream& fichier_
                     duree = convStringVersInt(chaine.substr(2, 1));
                 }
                 
-                tab_taches.push_back(chaine.substr(0, 1));
-                tab_durees.push_back(duree);
+                tabTaches.push_back(chaine.substr(0, 1));
+                tabDurees.push_back(duree);
                 
                 cout << ">>> Ajout de la tache " << i << "Sommet(s): ";
                 cout << chaine.substr(0, 1) << endl;
@@ -349,7 +349,7 @@ int Graphe::lectureFichierAvecContraintes(string nom_fichier, ofstream& fichier_
              - La méthode définitionContraintes procèdera à l'extraction de chaque caractère pour l'ajouter en mémoire
              */
             getline(fichier, chaine);
-            tab_sommets.push_back(this->definitionContraintes(chaine, fichier_resultat));
+            tabSommets.push_back(this->initContraintes(chaine, fichier_resultat));
         }
         
         cout << endl;
@@ -367,7 +367,7 @@ int Graphe::lectureFichierAvecContraintes(string nom_fichier, ofstream& fichier_
     return 0;
 }
 
-Sommet Graphe::definitionContraintes(string chaine, ofstream& fichier_resultat)
+Sommet Graphe::initContraintes(string chaine, ofstream& fichier_resultat)
 {
     Sommet S;
     // Ajout du nom du sommet dans l'instance
@@ -418,7 +418,7 @@ Sommet Graphe::definitionContraintes(string chaine, ofstream& fichier_resultat)
     return S;
 }
 
-Arc Graphe::definitionArc(int duree, string sommet, string predecesseur) {
+Arc Graphe::initArc(int duree, string sommet, string predecesseur) {
     Arc A;
     A.setDuree(duree);
     A.ajoutArc(sommet, predecesseur);
@@ -427,7 +427,7 @@ Arc Graphe::definitionArc(int duree, string sommet, string predecesseur) {
 }
 
 
-Sommet Graphe::definitionSommetAlpha(string sommet, int nombre_contraintes, int nombre_successeurs, vector<string> liste_successeurs)
+Sommet Graphe::initSommetAlpha(string sommet, int nombre_contraintes, int nombre_successeurs, vector<string> liste_successeurs)
 {
     Sommet S;
     
@@ -444,7 +444,7 @@ Sommet Graphe::definitionSommetAlpha(string sommet, int nombre_contraintes, int 
     return S;
 }
 
-Sommet Graphe::definitionSommetOmega(string sommet, int nombre_contraintes, int nombre_successeurs, vector<string> liste_contraintes)
+Sommet Graphe::initSommetOmega(string sommet, int nombre_contraintes, int nombre_successeurs, vector<string> liste_contraintes)
 {
     Sommet S;
     
@@ -461,7 +461,7 @@ Sommet Graphe::definitionSommetOmega(string sommet, int nombre_contraintes, int 
     return S;
 }
 
-void Graphe::creationGrapheOrdonnancement(ofstream& fichier_resultat) {
+void Graphe::grapheOrdonnancement(ofstream& fichier_resultat) {
     
     
     cout << "***********   Création du graphe d'ordonancement" << endl << endl;
@@ -476,7 +476,7 @@ void Graphe::creationGrapheOrdonnancement(ofstream& fichier_resultat) {
     if (fichier_resultat)
     {
         cout << "Propriétés du graphe:" << endl;
-        cout << "Nombre de sommet(s): " << this->getNombreTaches() + 2 << " (" << this->getNombreTaches() << " + 2 sommets incidents a et z)" << endl;
+        cout << "Nombre de sommet(s): " << this->obtenirNombreTaches() + 2 << " (" << this->obtenirNombreTaches() << " + 2 sommets incidents a et z)" << endl;
         cout << " * Graphe orienté." << endl;
         cout << " * 1 valeur numérique (durée) pour chaque arc." << endl;
         cout << " Maximum 1 arc d'un sommet X vers un sommet Y donné." << endl << endl;
@@ -485,7 +485,7 @@ void Graphe::creationGrapheOrdonnancement(ofstream& fichier_resultat) {
         
         fichier_resultat << "--> Création du graphe..." << endl;
         fichier_resultat << "--> Propriétés du graphe:" << endl;
-        fichier_resultat << " - Nombre de sommets: " << this->getNombreTaches() + 2 << " (" << this->getNombreTaches() << " + 2 sommets incidents a et z)" << endl;
+        fichier_resultat << " - Nombre de sommets: " << this->obtenirNombreTaches() + 2 << " (" << this->obtenirNombreTaches() << " + 2 sommets incidents a et z)" << endl;
         fichier_resultat << " - Graphe orienté." << endl;
         fichier_resultat << " - 1 valeur numérique (durée) pour chaque arc." << endl;
         fichier_resultat << " - Maximum 1 arc d'un sommet X vers un sommet Y donné." << endl << endl;
@@ -528,7 +528,7 @@ void Graphe::creationGrapheOrdonnancement(ofstream& fichier_resultat) {
                         if (tab_sommets[j].ObtenirContrainte(k) == sommet_actuel)
                         {
                             nombre_successeurs++;
-                            tab_sommets[i].ajoutSuccesseur(sommet_cible);
+                            tabSommets[i].ajoutSuccesseur(sommet_cible);
                         }
                     }
                     
@@ -561,19 +561,19 @@ void Graphe::ajoutSommetsIncidents(ofstream& fichier_resultat) {
         nombre_successeurs = tab_sommets[i].ObtenirNombreSuccesseurs();
         nom_sommet = tab_sommets[i].ObtenirNomSommet();
         
-        it = find(tab_taches.begin(), tab_taches.end(), nom_sommet); // it++
-        position = distance(tab_taches.begin(), it);
+        it = find(tabTaches.begin(), tabTaches.end(), nom_sommet); // it++
+        position = distance(tabTaches.begin(), it);
         
-        duree = this->getDuree(i);
+        duree = this->obtenirDuree(i);
         
         // Si le sommet n'a pas de prédécesseur, alors le sommet incident de début sera son prédécesseur avec une durée nulle (0)
         if (nombre_contraintes == 0)
         {
             successeurs_alpha.push_back(nom_sommet);
             nombre_successeurs_alpha++;
-            cout << " * Ajout de l'arc a --[" << tab_durees[position] << "]--> " << nom_sommet << endl;
-            fichier_resultat << " * Ajout de l'arc a --[" << tab_durees[position] << "]--> " << nom_sommet << endl;
-            tab_arcs.push_back(this->definitionArc(0,nom_sommet, "a")); // Sommet incident de début: "a" (alpha)
+            cout << " * Ajout de l'arc a --[" << tabDurees[position] << "]--> " << nom_sommet << endl;
+            fichier_resultat << " * Ajout de l'arc a --[" << tabDurees[position] << "]--> " << nom_sommet << endl;
+            tabArcs.push_back(this->initArc(0,nom_sommet, "a")); // Sommet incident de début: "a" (alpha)
         }
         
         // Si le sommet n'a pas de successeur, alors le sommet incident de fin sera son successeur
@@ -581,9 +581,9 @@ void Graphe::ajoutSommetsIncidents(ofstream& fichier_resultat) {
         {
             predecesseurs_omega.push_back(nom_sommet);
             nombre_predecesseurs_omega++;
-            cout << " * Ajout de l'arc " << nom_sommet << " --[" << tab_durees[position] << "]--> z" << endl;
-            fichier_resultat << " * Ajout de l'arc " << nom_sommet << " --[" << tab_durees[position] << "]--> z" << endl;
-            tab_arcs.push_back(this->definitionArc(duree, "z", nom_sommet)); // Sommet incident de fin: "z" (omega)
+            cout << " * Ajout de l'arc " << nom_sommet << " --[" << tabDurees[position] << "]--> z" << endl;
+            fichier_resultat << " * Ajout de l'arc " << nom_sommet << " --[" << tabDurees[position] << "]--> z" << endl;
+            tabArcs.push_back(this->initArc(duree, "z", nom_sommet)); // Sommet incident de fin: "z" (omega)
         }
         
         i++;
@@ -591,24 +591,24 @@ void Graphe::ajoutSommetsIncidents(ofstream& fichier_resultat) {
 
     
     // Définition des sommets incidents: ajout des 2 sommets incidents dans la liste des tâches
-    this->setNombreTaches(taches + 2);
+    this->definirNombreTaches(taches + 2);
     
-    tab_taches.push_back(sommet_alpha);
-    tab_durees.push_back(0);
-    tab_taches.push_back(sommet_omega);
-    tab_durees.push_back(duree);
+    tabTaches.push_back(sommet_alpha);
+    tabDurees.push_back(0);
+    tabTaches.push_back(sommet_omega);
+    tabDurees.push_back(duree);
     
-    tab_sommets.push_back(this->definitionSommetAlpha(sommet_alpha, 0, nombre_successeurs_alpha, successeurs_alpha));
-    tab_sommets.push_back(this->definitionSommetOmega(sommet_omega, nombre_predecesseurs_omega, 0, predecesseurs_omega));
+    tabSommets.push_back(this->initSommetAlpha(sommet_alpha, 0, nombre_successeurs_alpha, successeurs_alpha));
+    tabSommets.push_back(this->initSommetOmega(sommet_omega, nombre_predecesseurs_omega, 0, predecesseurs_omega));
     
     // Vu qu'on a ajouté le sommet incident alpha, on doit mettre à jour les sommets qui ont alpha en prédécesseur
     
     cout << endl;
 }
-void Graphe::definitionMatrices(ofstream& fichier_resultat) {
+void Graphe::initMatrices(ofstream& fichier_resultat) {
     cout << "***********   Definition des matrices" << endl << endl;
     
-    int nombre_arcs = tab_arcs.size();
+    int nombre_arcs = tabArcs.size();
     int position1, position2;
     string predecesseur_actuel;
     string sommet_actuel;
@@ -628,11 +628,11 @@ void Graphe::definitionMatrices(ofstream& fichier_resultat) {
         cout << " * Arc " << (i + 1) << ": " << tab_arcs[i].ObtenirPredecesseur() << " --[" << tab_arcs[i].getDuree() << "]--> " << tab_arcs[i].ObtenirNomSommet() << endl;
         fichier_resultat << " * Arc " << (i + 1) << ": " << tab_arcs[i].getPredecesseur() << " --[" << tab_arcs[i].getDuree() << "]--> " << tab_arcs[i].getNomSommet() << endl;
         
-        it = find(tab_taches.begin(), tab_taches.end(), sommet_actuel); // it++
-        position1 = distance(tab_taches.begin(), it);
+        it = find(tabTaches.begin(), tabTaches.end(), sommet_actuel); // it++
+        position1 = distance(tabTaches.begin(), it);
         
-        it = find(tab_taches.begin(), tab_taches.end(), predecesseur_actuel); // it++
-        position2 = distance(tab_taches.begin(), it);
+        it = find(tabTaches.begin(), tabTaches.end(), predecesseur_actuel); // it++
+        position2 = distance(tabTaches.begin(), it);
         
         wcout << L"   -> Passage a 1 dans la matrice d'adjacence, case[" << position2 << "][" << position1 << "]" << endl;
         wcout << L"   -> Passage a " << duree_actuelle << " dans la matrice des valeurs, case[" << position2 << "][" << position1 << "]" << endl;
@@ -640,12 +640,12 @@ void Graphe::definitionMatrices(ofstream& fichier_resultat) {
         fichier_resultat << "   -> Passage a 1 dans la matrice d'adjacence, case[" << position2 << "][" << position1 << "]" << endl;
         fichier_resultat << "   -> Passage a " << duree_actuelle << " dans la matrice des valeurs, case[" << position2 << "][" << position1 << "]" << endl;
         
-        matrice_adjacence[position2][position1] = true;
-        matrice_valeurs[position2][position1] = duree_actuelle;
+        matriceAdjacence[position2][position1] = true;
+        matriceValeurs[position2][position1] = duree_actuelle;
     }
 }
-void Graphe::FermetureTransitiveMatrice(ofstream& fichier_resultat) {
-    cout << "***********   Fermeture transitive matrice" << endl << endl;
+void Graphe::matriceTransitiveFermeture(ofstream& fichier_resultat) {
+    cout << "***********   Matrice Transitive Fermeture" << endl << endl;
     
     /* Méthode pour calculer la fermeture transitive d'un graphe à l'aide de la matrice d'adjacence
      -> On utilisera l'algorithme de Warshall ou Roy-Warshall:
@@ -654,11 +654,11 @@ void Graphe::FermetureTransitiveMatrice(ofstream& fichier_resultat) {
      */
     
     // Initialisation d'une matrice booléenne: tableau à 2 dimensions du type bool
-    bool **matrice_adjacence1 = new bool * [taches];
+    bool **matriceAdjacence1 = new bool * [taches];
     
     for (int i = 0; i < taches; i++)
     {
-        matrice_adjacence1[i] = new bool[taches];
+        matriceAdjacence1[i] = new bool[taches];
     }
     
     // Initialisation de la matrice d'adjacence
@@ -666,7 +666,7 @@ void Graphe::FermetureTransitiveMatrice(ofstream& fichier_resultat) {
     {
         for (int j = 0; j < taches; j++)
         {
-            matrice_adjacence1[i][j] = false;
+            matriceAdjacence1[i][j] = false;
         }
     }
     
@@ -701,27 +701,27 @@ void Graphe::FermetureTransitiveMatrice(ofstream& fichier_resultat) {
                 {
                     if (n == 2)
                     {
-                        matrice_adjacence1[i][j] += (bool)((int)matrice_adjacence[i][k] * (int)matrice_adjacence[k][j]);
+                        matriceAdjacence1[i][j] += (bool)((int)matriceAdjacence[i][k] * (int)matriceAdjacence[k][j]);
                     }
                     else
                     {
-                        matrice_adjacence1[i][j] += (bool)((int)matrice_adjacence[i][k] * (int)matrice_adjacence1[k][j]);
+                        matriceAdjacence1[i][j] += (bool)((int)matriceAdjacence[i][k] * (int)matriceAdjacence1[k][j]);
                     }
                 }
                 
                 if (n == 2)
                 {
-                    matrice_transitive[i][j] = (matrice_adjacence1[i][j] || matrice_adjacence[i][j]);
+                    matriceTransitive[i][j] = (matriceAdjacence1[i][j] || matriceAdjacence1[i][j]);
                 }
                 else
                 {
-                    matrice_transitive[i][j] = (matrice_adjacence1[i][j] || matrice_transitive[i][j]);
+                    matriceTransitive[i][j] = (matriceAdjacence1[i][j] || matriceTransitive[i][j]);
                 }
             }
         }
         
         affichageMatriceAdjacencePuissance(n, false, fichier_resultat);
-        puissance_fermeture_transitive = n;
+        puissance = n;
     }
 }
 
@@ -752,7 +752,7 @@ void Graphe::affichageMatriceAdjacence() const
         
         for (int j = 0; j < taches; j++)
         {
-            if (matrice_adjacence[i][j])
+            if (matriceAdjacence[i][j])
             {
                 cout << "1  "; 
             }
@@ -869,7 +869,7 @@ void Graphe::affichageMatriceAdjacencePuissance(int puissance, bool affichage, o
             // Puissance = 1: on s'intéresse à la matrice d'adjacence originale, puissance > 1: la matrice transitive actuelle
             if (puissance == 1)
             {
-                if (matrice_adjacence[i][j])
+                if (matriceAdjacence[i][j])
                 {
                     cout << "1  "; 
                     
@@ -892,7 +892,7 @@ void Graphe::affichageMatriceAdjacencePuissance(int puissance, bool affichage, o
             }
             else
             {
-                if (matrice_transitive[i][j])
+                if (matriceTransitive[i][j])
                 {
                     cout << "1  "; 
                     
@@ -935,7 +935,7 @@ bool Graphe::detectionCircuit(ofstream& fichier_resultat) {
    	// Étape 1: Vérification de la présence de boucles
    	wcout << L"-> Lecture de la matrice d'adjacence associée à sa fermeture transitive: " << endl << endl;
     
-   	affichageMatriceAdjacencePuissance(puissance_fermeture_transitive, false, fichier_resultat);
+   	affichageMatriceAdjacencePuissance(puissance, false, fichier_resultat);
     
    	for (int i = 0; i < taches; i++)
    	{
@@ -944,12 +944,12 @@ bool Graphe::detectionCircuit(ofstream& fichier_resultat) {
             if (i == j)
             {
                 // Si la case de la diagonale est un 1 (ici si c'est un booléen à l'état "vrai"), alors il y a un circuit
-                if (matrice_transitive[i][j] == true)
+                if (matriceTransitive[i][j] == true)
                 {
                     cout << " -> ATTENTION: Le graphe contient au moins un circuit (il y a au moins un 1 dans la diagonale) !" << endl;
                     fichier_resultat << " -> ATTENTION: Le graphe contient au moins un circuit (il y a au moins un 1 dans la diagonale) !" << endl;
                     fichier_resultat << endl << ">>> ALERTE: Le calcul du rang de chaque sommet est impossible !" << endl;
-                    circuit = true;
+                    estUnCircuit = true;
                     
                     Pause();
                     return true;
@@ -962,13 +962,13 @@ bool Graphe::detectionCircuit(ofstream& fichier_resultat) {
    	cout << " -> Le graphe n'a pas de circuit (que des 0 dans la diagonale)." << endl;
    	fichier_resultat << " -> Le graphe n'a pas de circuit (que des 0 dans la diagonale)." << endl;
     fichier_resultat << endl << ">>> Le calcul du rang de chaque sommet est possible !" << endl << endl;
-   	circuit = false;
+   	estUnCircuit = false;
     
    	return false;
 }
 
 
-void Graphe::definitionRangsSommets(ofstream& fichier_resultat)
+void Graphe::initRangsSommets(ofstream& fichier_resultat)
 {
     system("clear");
     
@@ -1007,7 +1007,7 @@ int Graphe::calculRecursifRangSommet(int position_sommet)
     
     for (int i = 0; i < taches; i++)
     {
-        if (matrice_adjacence[i][position_sommet])
+        if (matriceAdjacence[i][position_sommet])
         {
             /* Recherche du predecesseur du sommet actuel en lisant la matrice d'adjacence, on cible:
              -> Ligne numéro i dans la boucle for
@@ -1031,7 +1031,7 @@ int Graphe::calculRecursifRangSommet(int position_sommet)
     }
 }
 
-void Graphe::definitionCalendrierAuPlusTot(ofstream& fichier_resultat)
+void Graphe::initCalendrierAuPlusTot(ofstream& fichier_resultat)
 {
     
     /* L'utilisation d'un tableau associatif map<string, int> est très utile ici:
@@ -1065,7 +1065,7 @@ int Graphe::calculRecursifDateAuPlusTot(int position_sommet)
     
     for (int i = 0; i < taches; i++)
     {
-        if (matrice_adjacence[i][position_sommet])
+        if (matriceAdjacence[i][position_sommet])
         {
             /* Recherche du predecesseur du sommet actuel en lisant la matrice d'adjacence, on cible:
              -> Ligne numéro i dans la boucle for
@@ -1079,7 +1079,7 @@ int Graphe::calculRecursifDateAuPlusTot(int position_sommet)
     
    	for (set<int>::iterator it = predecesseur.begin(); it != predecesseur.end(); it++)
     {
-        date_predecesseur.insert(matrice_valeurs[*it][position_sommet] + calculRecursifDateAuPlusTot(*it));
+        date_predecesseur.insert(matriceValeurs[*it][position_sommet] + calculRecursifDateAuPlusTot(*it));
     }
     
     // S'il n'y a pas de successeur, alors la date au plus tard du sommet est donc 0 par défaut
@@ -1096,7 +1096,7 @@ int Graphe::calculRecursifDateAuPlusTot(int position_sommet)
     }
 }
 
-void Graphe::definitionCalendrierAuPlusTard(ofstream& fichier_resultat)
+void Graphe::initCalendrierAuPlusTard(ofstream& fichier_resultat)
 {
     system("clear");
     
@@ -1134,7 +1134,7 @@ int Graphe::calculRecursifDateAuPlusTard(int position_sommet)
         /* Recherche du successeur du sommet actuel en lisant la matrice d'adjacence, on cible:
          -> Ligne numéro position_sommet (numéro sommet)
          -> Colonne numéro i dans la boucle for */
-        if (matrice_adjacence[position_sommet][i])
+        if (matriceAdjacence[position_sommet][i])
         {
             // Recherche du successeur du sommet actuel
             successeur.insert(i);
@@ -1147,7 +1147,7 @@ int Graphe::calculRecursifDateAuPlusTard(int position_sommet)
    	for (set<int>::iterator it = successeur.begin(); it != successeur.end(); it++)
     {
         // La date au plus tard minimale des successeurs s'obtient par appels récursifs successifs de la méthode avec le successeur en question
-        date_successeur.insert(calculRecursifDateAuPlusTard(*it) - matrice_valeurs[position_sommet][*it]);
+        date_successeur.insert(calculRecursifDateAuPlusTard(*it) - matriceValeurs[position_sommet][*it]);
     }
     
     // S'il n'y a pas de successeur, alors la date au plus tard du sommet est égale à la date au plus tôt
