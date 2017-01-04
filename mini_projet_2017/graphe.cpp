@@ -330,7 +330,7 @@ Sommet Graphe::definitionContraintes(string chaine, ofstream& fichier_resultat)
         S.setNombreContraintes(chaine.length() - 1);
         
         cout << "Sommet " << chaine.substr(0, 1) << ", ";
-        cout << L"Il y a donc aucune contrainte à ajouter." << endl;
+        cout << "Il y a donc aucune contrainte à ajouter." << endl;
         
         fichier_resultat << " * Sommet " << chaine.substr(0, 1) << ", aucune contrainte à ajouter." << endl;
     }
@@ -371,7 +371,7 @@ Sommet Graphe::definitionContraintes(string chaine, ofstream& fichier_resultat)
 
 void Graphe::creationGrapheOrdonnancement(ofstream& fichier_resultat) {
     
-    vector<string>::iterator it; // Itérateur pour rechercher la position d'un élément
+    vector<string>::iterator it;
     int position = 0;
     string sommet_actuel;
     string sommet_cible;
@@ -381,8 +381,8 @@ void Graphe::creationGrapheOrdonnancement(ofstream& fichier_resultat) {
     {
         cout << "Création du graphe..." << endl << endl;
         cout << "Propriétés du graphe:" << endl;
-        cout << "Nombre de sommet(s): " << this->getNombreTaches() + 2 << " (" << this->getNombreTaches() << " + 2 sommets incidents a et z)" << endl; // Il faut inclure les sommets incidents
-//        cout << " * Graphe orienté." << endl;
+        cout << "Nombre de sommet(s): " << this->getNombreTaches() + 2 << " (" << this->getNombreTaches() << " + 2 sommets incidents a et z)" << endl;
+        cout << " * Graphe orienté." << endl;
         cout << " * 1 valeur numérique (durée) pour chaque arc." << endl;
         cout << " Maximum 1 arc d'un sommet X vers un sommet Y donné." << endl << endl;
         
@@ -390,7 +390,7 @@ void Graphe::creationGrapheOrdonnancement(ofstream& fichier_resultat) {
         
         fichier_resultat << "--> Création du graphe..." << endl;
         fichier_resultat << "--> Propriétés du graphe:" << endl;
-        fichier_resultat << " - Nombre de sommets: " << this->getNombreTaches() + 2 << " (" << this->getNombreTaches() << " + 2 sommets incidents a et z)" << endl; // Il faut inclure les sommets incidents
+        fichier_resultat << " - Nombre de sommets: " << this->getNombreTaches() + 2 << " (" << this->getNombreTaches() << " + 2 sommets incidents a et z)" << endl;
         fichier_resultat << " - Graphe orienté." << endl;
         fichier_resultat << " - 1 valeur numérique (durée) pour chaque arc." << endl;
         fichier_resultat << " - Maximum 1 arc d'un sommet X vers un sommet Y donné." << endl << endl;
@@ -402,7 +402,6 @@ void Graphe::creationGrapheOrdonnancement(ofstream& fichier_resultat) {
         cout << endl;
         
         Pause();
-        system("clear");
         
         // Ajout des successeurs pour chaque arc
         cout << "--> Identification des successeurs de chaques sommets" << endl;
