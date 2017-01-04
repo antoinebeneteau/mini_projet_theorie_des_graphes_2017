@@ -17,17 +17,17 @@ int main(void)
     map<int, string> fichiers;
     map<int, string> fichiers_R;
     
-    fichiers[1] = "/Users/antoinebeneteau/Documents/mini_projet_2017/mini_projet_2017/tableau_contraintes1.txt";
-    fichiers[2] = "/Users/antoinebeneteau/Documents/mini_projet_2017/mini_projet_2017/tableau_contraintes2.txt";
-    fichiers[3] = "/Users/antoinebeneteau/Documents/mini_projet_2017/mini_projet_2017/tableau_contraintes3.txt";
-    fichiers[4] = "/Users/antoinebeneteau/Documents/mini_projet_2017/mini_projet_2017/tableau_contraintes4.txt";
-    fichiers[5] = "/Users/antoinebeneteau/Documents/mini_projet_2017/mini_projet_2017/tableau_contraintes5.txt";
+    fichiers[1] = "/Users/antoinemalinur/Documents/mini_projet_theorie_des_graphes_2017/mini_projet_2017/tableau_contraintes1.txt";
+    fichiers[2] = "/Users/antoinemalinur/Documents/mini_projet_theorie_des_graphes_2017/mini_projet_2017/tableau_contraintes2.txt";
+    fichiers[3] = "/Users/antoinemalinur/Documents/mini_projet_theorie_des_graphes_2017/mini_projet_2017/tableau_contraintes3.txt";
+    fichiers[4] = "/Users/antoinemalinur/Documents/mini_projet_theorie_des_graphes_2017/mini_projet_2017/tableau_contraintes4.txt";
+    fichiers[5] = "/Users/antoinemalinur/Documents/mini_projet_theorie_des_graphes_2017/mini_projet_2017/tableau_contraintes5.txt";
     
-    fichiers_R[1] = "/Users/antoinebeneteau/Documents/mini_projet_2017/mini_projet_2017/tableau_contraintes1_R.txt";
-    fichiers_R[2] = "/Users/antoinebeneteau/Documents/mini_projet_2017/mini_projet_2017/tableau_contraintes2_R.txt";
-    fichiers_R[3] = "/Users/antoinebeneteau/Documents/mini_projet_2017/mini_projet_2017/tableau_contraintes3_R.txt";
-    fichiers_R[4] = "/Users/antoinebeneteau/Documents/mini_projet_2017/mini_projet_2017/tableau_contraintes4_R.txt";
-    fichiers_R[5] = "/Users/antoinebeneteau/Documents/mini_projet_2017/mini_projet_2017/tableau_contraintes5_R.txt";
+    fichiers_R[1] = "/Users/antoinemalinur/Documents/mini_projet_theorie_des_graphes_2017/mini_projet_2017/tableau_contraintes1_R.txt";
+    fichiers_R[2] = "/Users/antoinemalinur/Documents/mini_projet_theorie_des_graphes_2017/mini_projet_2017/tableau_contraintes2_R.txt";
+    fichiers_R[3] = "/Users/antoinemalinur/Documents/mini_projet_theorie_des_graphes_2017/mini_projet_2017/tableau_contraintes3_R.txt";
+    fichiers_R[4] = "/Users/antoinemalinur/Documents/mini_projet_theorie_des_graphes_2017/mini_projet_2017/tableau_contraintes4_R.txt";
+    fichiers_R[5] = "/Users/antoinemalinur/Documents/mini_projet_theorie_des_graphes_2017/mini_projet_2017/tableau_contraintes5_R.txt";
 
     
     int choix = 0, fichier_choisi = 0, option = 0;

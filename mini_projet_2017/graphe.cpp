@@ -24,42 +24,42 @@ void Sommet::ajoutContrainte(string sommet)
     liste_contraintes.push_back(sommet);
 }
 
-string Sommet::getContrainte(int indice) const
+string Sommet::ObtenirContrainte(int indice) const
 {
     return liste_contraintes[indice];
 }
 
-string Sommet::getNomSommet() const
+string Sommet::ObtenirNomSommet() const
 {
     return sommet;
 }
 
-void Sommet::setNomSommet(string sommet)
+void Sommet::DefinirNomSommet(string sommet)
 {
     this->sommet = sommet;
 }
 
-void Sommet::setRangSommet(int rang)
+void Sommet::DefinirRangSommet(int rang)
 {
     this->rang = rang;
 }
 
-int Sommet::getRangSommet() const
+int Sommet::ObtenirRangSommet() const
 {
     return rang;
 }
 
-int Sommet::getNombreContraintes() const
+int Sommet::ObtenirNombreContraintes() const
 {
     return nbr_contraintes;
 }
 
-void Sommet::setNombreContraintes(int nombre_contraintes)
+void Sommet::DefinirNombreContraintes(int nombre_contraintes)
 {
     this->nbr_contraintes = nombre_contraintes;
 }
 
-string Sommet::getSuccesseur(int indice) const
+string Sommet::ObtenirSuccesseur(int indice) const
 {
     return liste_successeurs[indice];
 }
@@ -69,12 +69,12 @@ void Sommet::ajoutSuccesseur(string sommet)
     liste_successeurs.push_back(sommet);
 }
 
-void Sommet::setNombreSuccesseurs(int nombre_successeurs)
+void Sommet::DefinirNombreSuccesseurs(int nombre_successeurs)
 {
     this->nbr_successeurs = nombre_successeurs;
 }
 
-int Sommet::getNombreSuccesseurs() const
+int Sommet::ObtenirNombreSuccesseurs() const
 {
     return nbr_successeurs;
 }
@@ -85,22 +85,22 @@ void Arc::ajoutArc(string sommet, string contrainte)
     predecesseur = contrainte;
 }
 
-void Arc::setDuree(int duree)
+void Arc::DefinirDuree(int duree)
 {
     this->duree = duree;
 }
 
-int Arc::getDuree() const
+int Arc::ObtenirDuree() const
 {
     return duree;
 }
 
-string Arc::getNomSommet() const
+string Arc::ObtenirNomSommet() const
 {
     return sommet;
 }
 
-string Arc::getPredecesseur() const
+string Arc::ObtenirPredecesseur() const
 {
     return predecesseur;
 }
@@ -371,12 +371,12 @@ Sommet Graphe::definitionContraintes(string chaine, ofstream& fichier_resultat)
 {
     Sommet S;
     // Ajout du nom du sommet dans l'instance
-    S.setNomSommet(chaine.substr(0, 1));
+    S.DefinirNomSommet(chaine.substr(0, 1));
     
     if (chaine.length() == 1) // Aucune contrainte
     {
         // Ajout du nombre de contraintes du sommet dans l'instance: ici 0
-        S.setNombreContraintes(chaine.length() - 1);
+        S.DefinirNombreContraintes(chaine.length() - 1);
         
         cout << "Sommet " << chaine.substr(0, 1) << ", ";
         cout << "Il y a donc aucune contrainte à ajouter." << endl;
@@ -386,7 +386,7 @@ Sommet Graphe::definitionContraintes(string chaine, ofstream& fichier_resultat)
     else if (chaine.length() == 3) // 1 contrainte
     {
         // Ajout du nombre de contraintes du sommet dans l'instance: ici 1
-        S.setNombreContraintes(chaine.length() - 2);
+        S.DefinirNombreContraintes(chaine.length() - 2);
         
         cout << " Sommet " << chaine.substr(0, 1) << ", ajout de la contrainte... " << endl;
         cout << "Ajout de la contrainte " << chaine.substr(2, 1) << "." << endl << endl;
@@ -400,7 +400,7 @@ Sommet Graphe::definitionContraintes(string chaine, ofstream& fichier_resultat)
         int contraintes = chaine.length() - 2; // Nombre de contraintes
         
         // Ajout du nombre de contraintes du sommet dans l'instance: 2 ou plus
-        S.setNombreContraintes(contraintes);
+        S.DefinirNombreContraintes(contraintes);
         
         cout << "Sommet " << chaine.substr(0, 1) << ", ajout de " << contraintes << " contrainte(s)... " << endl;
         fichier_resultat << " * Sommet " << chaine.substr(0, 1) << ", ajout de " << contraintes << " contrainte(s)... " << endl;
@@ -432,9 +432,9 @@ Sommet Graphe::definitionSommetAlpha(string sommet, int nombre_contraintes, int 
     Sommet S;
     
     // Sommet alpha
-    S.setNomSommet(sommet);
-    S.setNombreContraintes(nombre_contraintes);
-    S.setNombreSuccesseurs(nombre_successeurs);
+    S.DefinirNomSommet(sommet);
+    S.DefinirNombreContraintes(nombre_contraintes);
+    S.DefinirNombreSuccesseurs(nombre_successeurs);
     
     for (int i = 0; i < liste_successeurs.size(); i++)
     {
@@ -449,9 +449,9 @@ Sommet Graphe::definitionSommetOmega(string sommet, int nombre_contraintes, int 
     Sommet S;
     
     // Sommet omega
-    S.setNomSommet(sommet);
-    S.setNombreContraintes(nombre_contraintes);
-    S.setNombreSuccesseurs(nombre_successeurs);
+    S.DefinirNomSommet(sommet);
+    S.DefinirNombreContraintes(nombre_contraintes);
+    S.DefinirNombreSuccesseurs(nombre_successeurs);
     
     for (int i = 0; i < liste_contraintes.size(); i++)
     {
@@ -494,16 +494,16 @@ void Graphe::creationGrapheOrdonnancement(ofstream& fichier_resultat) {
         // Ajout des arcs
         for (int i = 0; i < taches; i++)
         {
-            for (int j = 0; j < tab_sommets[i].getNombreContraintes(); j++)
+            for (int j = 0; j < tab_sommets[i].ObtenirNombreContraintes(); j++)
             {
-                if (tab_sommets[i].getNombreContraintes() >= 1)
+                if (tab_sommets[i].ObtenirNombreContraintes() >= 1)
                 {
-                    it = find(tab_taches.begin(), tab_taches.end(), tab_sommets[i].getContrainte(j)); // it++
+                    it = find(tab_taches.begin(), tab_taches.end(), tab_sommets[i].ObtenirContrainte(j)); // it++
                     position = distance(tab_taches.begin(), it);
-                    cout << tab_sommets[i].getContrainte(j) << " --[" << tab_durees[position] << "]--> " << tab_sommets[i].getNomSommet() << endl;
-                    tab_arcs.push_back(this->definitionArc(tab_durees[position],tab_sommets[i].getNomSommet(), tab_sommets[i].getContrainte(j)));
+                    cout << tab_sommets[i].ObtenirContrainte(j) << " --[" << tab_durees[position] << "]--> " << tab_sommets[i].ObtenirNomSommet() << endl;
+                    tab_arcs.push_back(this->definitionArc(tab_durees[position],tab_sommets[i].ObtenirNomSommet(), tab_sommets[i].ObtenirContrainte(j)));
                     
-                    fichier_resultat << " * " << tab_sommets[i].getContrainte(j) << " --[" << tab_durees[position] << "]--> " << tab_sommets[i].getNomSommet() << endl;
+                    fichier_resultat << " * " << tab_sommets[i].ObtenirContrainte(j) << " --[" << tab_durees[position] << "]--> " << tab_sommets[i].ObtenirNomSommet() << endl;
                 }
             }
         }
@@ -514,25 +514,25 @@ void Graphe::creationGrapheOrdonnancement(ofstream& fichier_resultat) {
         // Ajout des successeurs pour chaque arc
         for (int i = 0; i < taches; i++)
         {
-            sommet_actuel = tab_sommets[i].getNomSommet();
+            sommet_actuel = tab_sommets[i].ObtenirNomSommet();
             nombre_successeurs = 0;
             
             for (int j = 0; j < taches; j++)
             {
                 if (i != j)
                 {
-                    sommet_cible = tab_sommets[j].getNomSommet();
+                    sommet_cible = tab_sommets[j].ObtenirNomSommet();
                     
-                    for (int k = 0; k < tab_sommets[j].getNombreContraintes(); k++)
+                    for (int k = 0; k < tab_sommets[j].ObtenirNombreContraintes(); k++)
                     {
-                        if (tab_sommets[j].getContrainte(k) == sommet_actuel)
+                        if (tab_sommets[j].ObtenirContrainte(k) == sommet_actuel)
                         {
                             nombre_successeurs++;
                             tab_sommets[i].ajoutSuccesseur(sommet_cible);
                         }
                     }
                     
-                    tab_sommets[i].setNombreSuccesseurs(nombre_successeurs);
+                    tab_sommets[i].DefinirNombreSuccesseurs(nombre_successeurs);
                 }
             }
         }
@@ -557,9 +557,9 @@ void Graphe::ajoutSommetsIncidents(ofstream& fichier_resultat) {
     // Lecture des contraintes
     int i = 0;
     do {
-        nombre_contraintes = tab_sommets[i].getNombreContraintes();
-        nombre_successeurs = tab_sommets[i].getNombreSuccesseurs();
-        nom_sommet = tab_sommets[i].getNomSommet();
+        nombre_contraintes = tab_sommets[i].ObtenirNombreContraintes();
+        nombre_successeurs = tab_sommets[i].ObtenirNombreSuccesseurs();
+        nom_sommet = tab_sommets[i].ObtenirNomSommet();
         
         it = find(tab_taches.begin(), tab_taches.end(), nom_sommet); // it++
         position = distance(tab_taches.begin(), it);
@@ -621,11 +621,11 @@ void Graphe::definitionMatrices(ofstream& fichier_resultat) {
     // Lecture des arcs
     for (int i = 0; i < nombre_arcs; i++)
     {
-        predecesseur_actuel = tab_arcs[i].getPredecesseur();
-        sommet_actuel = tab_arcs[i].getNomSommet();
-        duree_actuelle = tab_arcs[i].getDuree();
+        predecesseur_actuel = tab_arcs[i].ObtenirPredecesseur();
+        sommet_actuel = tab_arcs[i].ObtenirNomSommet();
+        duree_actuelle = tab_arcs[i].ObtenirDuree();
         
-        cout << " * Arc " << (i + 1) << ": " << tab_arcs[i].getPredecesseur() << " --[" << tab_arcs[i].getDuree() << "]--> " << tab_arcs[i].getNomSommet() << endl;
+        cout << " * Arc " << (i + 1) << ": " << tab_arcs[i].ObtenirPredecesseur() << " --[" << tab_arcs[i].getDuree() << "]--> " << tab_arcs[i].ObtenirNomSommet() << endl;
         fichier_resultat << " * Arc " << (i + 1) << ": " << tab_arcs[i].getPredecesseur() << " --[" << tab_arcs[i].getDuree() << "]--> " << tab_arcs[i].getNomSommet() << endl;
         
         it = find(tab_taches.begin(), tab_taches.end(), sommet_actuel); // it++
@@ -735,11 +735,11 @@ void Graphe::affichageMatriceAdjacence() const
     {
         if (i == 0)
         {
-            cout << "    " << tab_sommets[i].getNomSommet() << "  ";
+            cout << "    " << tab_sommets[i].ObtenirNomSommet() << "  ";
         }
         else
         {
-            cout << tab_sommets[i].getNomSommet() << "  ";
+            cout << tab_sommets[i].ObtenirNomSommet() << "  ";
         }
     }
     
@@ -748,7 +748,7 @@ void Graphe::affichageMatriceAdjacence() const
     // Affichage du contenu de la matrice
     for (int i = 0; i < taches; i++)
     {
-        cout << tab_sommets[i].getNomSommet() << "   ";
+        cout << tab_sommets[i].ObtenirNomSommet() << "   ";
         
         for (int j = 0; j < taches; j++)
         {
@@ -978,7 +978,7 @@ void Graphe::definitionRangsSommets(ofstream& fichier_resultat)
     
     for (int i = 0; i < taches; i++)
     {
-        sommet_cible = tab_sommets[i].getNomSommet();
+        sommet_cible = tab_sommets[i].ObtenirNomSommet();
         cout << " * Sommet : " << sommet_cible;
         rangs_sommets[sommet_cible] = calculRecursifRangSommet(i);
         wcout << L"  -> Rang attribué: " << rangs_sommets[sommet_cible] << endl;
@@ -986,7 +986,7 @@ void Graphe::definitionRangsSommets(ofstream& fichier_resultat)
         fichier_resultat << " * Sommet : " << sommet_cible << "  -> Rang attribué: " << rangs_sommets[sommet_cible] << endl;
         
         // On sauvegarde le rang dans une instance de la classe Sommet via le tableau liste_sommet
-        tab_sommets[i].setRangSommet(rangs_sommets[sommet_cible]);
+        tab_sommets[i].DefinirRangSommet(rangs_sommets[sommet_cible]);
     }
 }
 

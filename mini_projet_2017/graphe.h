@@ -30,17 +30,17 @@ private:
     
 public:
     void ajoutContrainte(string sommet);
-    string getContrainte(int indice) const;
-    string getNomSommet() const;
-    void setNomSommet(string sommet);
-    void setRangSommet(int rang);
-    int getRangSommet() const;
-    int getNombreContraintes() const;
-    void setNombreContraintes(int nombre_contraintes);
-    string getSuccesseur(int indice) const;
+    string ObtenirContrainte(int indice) const;
+    string ObtenirNomSommet() const;
+    void DefinirNomSommet(string sommet);
+    void DefinirRangSommet(int rang);
+    int ObtenirRangSommet() const;
+    int ObtenirNombreContraintes() const;
+    void DefinirNombreContraintes(int nombre_contraintes);
+    string ObtenirSuccesseur(int indice) const;
     void ajoutSuccesseur(string sommet);
-    void setNombreSuccesseurs(int nombre_successeurs);
-    int getNombreSuccesseurs() const;
+    void DefinirNombreSuccesseurs(int nombre_successeurs);
+    int ObtenirNombreSuccesseurs() const;
 };
 
 class Arc
@@ -52,10 +52,10 @@ private:
     
 public:
     void ajoutArc(string sommet, string contrainte);
-    void setDuree(int duree);
-    int getDuree() const;
-    string getNomSommet() const;
-    string getPredecesseur() const;
+    void DefinirDuree(int duree);
+    int ObtenirDuree() const;
+    string ObtenirNomSommet() const;
+    string ObtenirPredecesseur() const;
 };
 
 class Graphe

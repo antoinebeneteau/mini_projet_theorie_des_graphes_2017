@@ -65,8 +65,8 @@ void affichageListeContraintes(Graphe g) {
     
     for (int i = 0; i < g.getNombreTaches(); i++)
     {
-        nombre_contraintes = g.getSommets()[i].getNombreContraintes();
-        nom_sommet = g.getSommets()[i].getNomSommet();
+        nombre_contraintes = g.getSommets()[i].ObtenirNombreContraintes();
+        nom_sommet = g.getSommets()[i].ObtenirNomSommet();
         
         if (nombre_contraintes == 0) // Aucune contrainte
         {
@@ -87,20 +87,20 @@ void affichageListeContraintes(Graphe g) {
             
             cout << " * " << nom_sommet;
             wcout << L" ne peut commencer que lorsque la tâche ";
-            cout << g.getSommets()[i].getContrainte(0); // Tableau d'une valeur = premier indice
+            cout << g.getSommets()[i].ObtenirContrainte(0); // Tableau d'une valeur = premier indice
             wcout << L" est terminée." << endl << endl;
         }
         else // 2 contraintes ou plus
         {
-            cout << ">>> Sommet " << nom_sommet << ": " << g.getSommets()[i].getNombreContraintes() << " contraintes." << endl;
+            cout << ">>> Sommet " << nom_sommet << ": " << g.ObtenirSommets()[i].ObtenirNombreContraintes() << " contraintes." << endl;
             
-            if (g.getSommets()[i].getNombreContraintes() >= 1)
+            if (g.getSommets()[i].ObtenirNombreContraintes() >= 1)
             {
-                for (int j = 0; j < g.getSommets()[i].getNombreContraintes(); j++)
+                for (int j = 0; j < g.getSommets()[i].ObtenirNombreContraintes(); j++)
                 {
                     cout << " * " << nom_sommet;
                     wcout << L" ne peut commencer que lorsque la tâche ";
-                    cout << g.getSommets()[i].getContrainte(j);
+                    cout << g.ObtenirSommets()[i].ObtenirContrainte(j);
                     wcout << L" est terminée." << endl;
                 }
             }
@@ -121,8 +121,8 @@ void affichageListeSuccesseurs(Graphe g) {
     
     for (int i = 0; i < g.getNombreTaches(); i++)
     {
-        nombre_successeurs = g.getSommets()[i].getNombreSuccesseurs();
-        nom_sommet = g.getSommets()[i].getNomSommet();
+        nombre_successeurs = g.ObtenirSommets()[i].ObtenirNombreSuccesseurs();
+        nom_sommet = g.ObtenirSommets()[i].ObtenirNomSommet();
         
         if (nombre_successeurs == 0) // Aucune contrainte
         {
@@ -137,13 +137,13 @@ void affichageListeSuccesseurs(Graphe g) {
         }
         else if (nombre_successeurs == 1) // 1 contrainte
         {
-            cout << ">>> Sommet " << nom_sommet << ": 1 successeur -> " << g.getSommets()[i].getSuccesseur(0) << endl;
+            cout << ">>> Sommet " << nom_sommet << ": 1 successeur -> " << g.ObtenirSommets()[i].ObtenirSuccesseur(0) << endl;
         }
         else // 2 contraintes ou plus
         {
-            cout << ">>> Sommet " << nom_sommet << ": " << g.getSommets()[i].getNombreSuccesseurs() << " successeurs -> ";
+            cout << ">>> Sommet " << nom_sommet << ": " << g.ObtenirSommets()[i].getNombreSuccesseurs() << " successeurs -> ";
             
-            if (g.getSommets()[i].getNombreSuccesseurs() >= 1)
+            if (g.ObtenirSommets()[i].ObtenirNombreSuccesseurs() >= 1)
             {
                 for (int j = 0; j < nombre_successeurs; j++)
                 {
