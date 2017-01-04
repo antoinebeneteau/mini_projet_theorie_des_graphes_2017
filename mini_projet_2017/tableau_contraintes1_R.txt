@@ -232,5 +232,3 @@ M^8 =   0  0  0  0  0  0  0  0  1
  * Sommet: G, Date au plus tard attribuée: 15
  * Sommet: a, Date au plus tard attribuée: 0
  * Sommet: z, Date au plus tard attribuée: 18
-
->>> Fin des résultats.

@@ -349,7 +349,7 @@ int Graphe::lectureFichierAvecContraintes(string nom_fichier, ofstream& fichier_
              - La méthode définitionContraintes procèdera à l'extraction de chaque caractère pour l'ajouter en mémoire
              */
             getline(fichier, chaine);
-            tabSommets.push_back(this->definitionContraintes(chaine, fichier_resultat));
+            tabSommets.push_back(this->initContraintes(chaine, fichier_resultat));
         }
         
         cout << endl;
@@ -367,7 +367,7 @@ int Graphe::lectureFichierAvecContraintes(string nom_fichier, ofstream& fichier_
     return 0;
 }
 
-Sommet Graphe::definitionContraintes(string chaine, ofstream& fichier_resultat)
+Sommet Graphe::initContraintes(string chaine, ofstream& fichier_resultat)
 {
     Sommet S;
     // Ajout du nom du sommet dans l'instance
@@ -418,7 +418,7 @@ Sommet Graphe::definitionContraintes(string chaine, ofstream& fichier_resultat)
     return S;
 }
 
-Arc Graphe::definitionArc(int duree, string sommet, string predecesseur) {
+Arc Graphe::initArc(int duree, string sommet, string predecesseur) {
     Arc A;
     A.setDuree(duree);
     A.ajoutArc(sommet, predecesseur);
@@ -427,7 +427,7 @@ Arc Graphe::definitionArc(int duree, string sommet, string predecesseur) {
 }
 
 
-Sommet Graphe::definitionSommetAlpha(string sommet, int nombre_contraintes, int nombre_successeurs, vector<string> liste_successeurs)
+Sommet Graphe::initSommetAlpha(string sommet, int nombre_contraintes, int nombre_successeurs, vector<string> liste_successeurs)
 {
     Sommet S;
     
@@ -444,7 +444,7 @@ Sommet Graphe::definitionSommetAlpha(string sommet, int nombre_contraintes, int 
     return S;
 }
 
-Sommet Graphe::definitionSommetOmega(string sommet, int nombre_contraintes, int nombre_successeurs, vector<string> liste_contraintes)
+Sommet Graphe::initSommetOmega(string sommet, int nombre_contraintes, int nombre_successeurs, vector<string> liste_contraintes)
 {
     Sommet S;
     
@@ -461,7 +461,7 @@ Sommet Graphe::definitionSommetOmega(string sommet, int nombre_contraintes, int 
     return S;
 }
 
-void Graphe::creationGrapheOrdonnancement(ofstream& fichier_resultat) {
+void Graphe::grapheOrdonnancement(ofstream& fichier_resultat) {
     
     
     cout << "***********   Création du graphe d'ordonancement" << endl << endl;
@@ -501,7 +501,7 @@ void Graphe::creationGrapheOrdonnancement(ofstream& fichier_resultat) {
                     it = find(tabTaches.begin(), tabTaches.end(), tabSommets[i].getContrainte(j)); // it++
                     position = distance(tabTaches.begin(), it);
                     cout << tabSommets[i].getContrainte(j) << " --[" << tabDurees[position] << "]--> " << tabSommets[i].getNomSommet() << endl;
-                    tabArcs.push_back(this->definitionArc(tabDurees[position],tabSommets[i].getNomSommet(), tabSommets[i].getContrainte(j)));
+                    tabArcs.push_back(this->initArc(tabDurees[position],tabSommets[i].getNomSommet(), tabSommets[i].getContrainte(j)));
                     
                     fichier_resultat << " * " << tabSommets[i].getContrainte(j) << " --[" << tabDurees[position] << "]--> " << tabSommets[i].getNomSommet() << endl;
                 }
@@ -573,7 +573,7 @@ void Graphe::ajoutSommetsIncidents(ofstream& fichier_resultat) {
             nombre_successeurs_alpha++;
             cout << " * Ajout de l'arc a --[" << tabDurees[position] << "]--> " << nom_sommet << endl;
             fichier_resultat << " * Ajout de l'arc a --[" << tabDurees[position] << "]--> " << nom_sommet << endl;
-            tabArcs.push_back(this->definitionArc(0,nom_sommet, "a")); // Sommet incident de début: "a" (alpha)
+            tabArcs.push_back(this->initArc(0,nom_sommet, "a")); // Sommet incident de début: "a" (alpha)
         }
         
         // Si le sommet n'a pas de successeur, alors le sommet incident de fin sera son successeur
@@ -583,7 +583,7 @@ void Graphe::ajoutSommetsIncidents(ofstream& fichier_resultat) {
             nombre_predecesseurs_omega++;
             cout << " * Ajout de l'arc " << nom_sommet << " --[" << tabDurees[position] << "]--> z" << endl;
             fichier_resultat << " * Ajout de l'arc " << nom_sommet << " --[" << tabDurees[position] << "]--> z" << endl;
-            tabArcs.push_back(this->definitionArc(duree, "z", nom_sommet)); // Sommet incident de fin: "z" (omega)
+            tabArcs.push_back(this->initArc(duree, "z", nom_sommet)); // Sommet incident de fin: "z" (omega)
         }
         
         i++;
@@ -598,14 +598,14 @@ void Graphe::ajoutSommetsIncidents(ofstream& fichier_resultat) {
     tabTaches.push_back(sommet_omega);
     tabDurees.push_back(duree);
     
-    tabSommets.push_back(this->definitionSommetAlpha(sommet_alpha, 0, nombre_successeurs_alpha, successeurs_alpha));
-    tabSommets.push_back(this->definitionSommetOmega(sommet_omega, nombre_predecesseurs_omega, 0, predecesseurs_omega));
+    tabSommets.push_back(this->initSommetAlpha(sommet_alpha, 0, nombre_successeurs_alpha, successeurs_alpha));
+    tabSommets.push_back(this->initSommetOmega(sommet_omega, nombre_predecesseurs_omega, 0, predecesseurs_omega));
     
     // Vu qu'on a ajouté le sommet incident alpha, on doit mettre à jour les sommets qui ont alpha en prédécesseur
     
     cout << endl;
 }
-void Graphe::definitionMatrices(ofstream& fichier_resultat) {
+void Graphe::initMatrices(ofstream& fichier_resultat) {
     cout << "***********   Definition des matrices" << endl << endl;
     
     int nombre_arcs = tabArcs.size();
@@ -644,8 +644,8 @@ void Graphe::definitionMatrices(ofstream& fichier_resultat) {
         matriceValeurs[position2][position1] = duree_actuelle;
     }
 }
-void Graphe::FermetureTransitiveMatrice(ofstream& fichier_resultat) {
-    cout << "***********   Fermeture transitive matrice" << endl << endl;
+void Graphe::matriceTransitiveFermeture(ofstream& fichier_resultat) {
+    cout << "***********   Matrice Transitive Fermeture" << endl << endl;
     
     /* Méthode pour calculer la fermeture transitive d'un graphe à l'aide de la matrice d'adjacence
      -> On utilisera l'algorithme de Warshall ou Roy-Warshall:
@@ -968,7 +968,7 @@ bool Graphe::detectionCircuit(ofstream& fichier_resultat) {
 }
 
 
-void Graphe::definitionRangsSommets(ofstream& fichier_resultat)
+void Graphe::initRangsSommets(ofstream& fichier_resultat)
 {
     system("clear");
     
@@ -1031,7 +1031,7 @@ int Graphe::calculRecursifRangSommet(int position_sommet)
     }
 }
 
-void Graphe::definitionCalendrierAuPlusTot(ofstream& fichier_resultat)
+void Graphe::initCalendrierAuPlusTot(ofstream& fichier_resultat)
 {
     
     /* L'utilisation d'un tableau associatif map<string, int> est très utile ici:
@@ -1096,7 +1096,7 @@ int Graphe::calculRecursifDateAuPlusTot(int position_sommet)
     }
 }
 
-void Graphe::definitionCalendrierAuPlusTard(ofstream& fichier_resultat)
+void Graphe::initCalendrierAuPlusTard(ofstream& fichier_resultat)
 {
     system("clear");
     

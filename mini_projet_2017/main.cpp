@@ -54,23 +54,23 @@ int main(void)
             if (fichierOK)
             {
                 Pause();
-                graphe.creationGrapheOrdonnancement(fichier_resultat);
+                graphe.grapheOrdonnancement(fichier_resultat);
                 Pause();
                 graphe.ajoutSommetsIncidents(fichier_resultat);
                 Pause();
-                graphe.definitionMatrices(fichier_resultat);
+                graphe.initMatrices(fichier_resultat);
                 Pause();
-                graphe.FermetureTransitiveMatrice(fichier_resultat);
+                graphe.matriceTransitiveFermeture(fichier_resultat);
                 Pause();
                 
                 bool circuit = graphe.detectionCircuit(fichier_resultat);
                 if (!circuit) {
                     Pause();
-                    graphe.definitionRangsSommets(fichier_resultat);
+                    graphe.initRangsSommets(fichier_resultat);
                     Pause();
-                    graphe.definitionCalendrierAuPlusTot(fichier_resultat);
+                    graphe.initCalendrierAuPlusTot(fichier_resultat);
                     Pause();
-                    graphe.definitionCalendrierAuPlusTard(fichier_resultat);
+                    graphe.initCalendrierAuPlusTard(fichier_resultat);
                     Pause();
                 }
                 

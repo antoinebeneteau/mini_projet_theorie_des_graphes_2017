@@ -110,21 +110,21 @@ public:
     void definirNombreTaches(int taches);
     
     // Principales
-    Sommet definitionContraintes(string chaine, ofstream& fichier_resultat);
-    Arc definitionArc(int duree, string sommet, string predecesseur);
-    Sommet definitionSommetAlpha(string sommet, int nombre_contraintes, int nombre_successeurs, vector<string> liste_successeurs);
-    Sommet definitionSommetOmega(string sommet, int nombre_contraintes, int nombre_successeurs, vector<string> liste_contraintes);
+    Sommet initContraintes(string chaine, ofstream& fichier_resultat);
+    Arc initArc(int duree, string sommet, string predecesseur);
+    Sommet initSommetAlpha(string sommet, int nombre_contraintes, int nombre_successeurs, vector<string> liste_successeurs);
+    Sommet initSommetOmega(string sommet, int nombre_contraintes, int nombre_successeurs, vector<string> liste_contraintes);
     
-    void creationGrapheOrdonnancement(ofstream& fichier_resultat);
+    void grapheOrdonnancement(ofstream& fichier_resultat);
     void ajoutSommetsIncidents(ofstream& fichier_resultat);
-    void definitionMatrices(ofstream& fichier_resultat);
-    void FermetureTransitiveMatrice(ofstream& fichier_resultat);
+    void initMatrices(ofstream& fichier_resultat);
+    void matriceTransitiveFermeture(ofstream& fichier_resultat);
     bool detectionCircuit(ofstream& fichier_resultat);
     
-    void definitionRangsSommets(ofstream& fichier_resultat);
+    void initRangsSommets(ofstream& fichier_resultat);
     int calculRecursifRangSommet(int position_sommet);
-    void definitionCalendrierAuPlusTard(ofstream& fichier_resultat);
-    void definitionCalendrierAuPlusTot(ofstream& fichier_resultat);
+    void initCalendrierAuPlusTard(ofstream& fichier_resultat);
+    void initCalendrierAuPlusTot(ofstream& fichier_resultat);
     int calculRecursifDateAuPlusTard(int position_sommet);
     int calculRecursifDateAuPlusTot(int position_sommet);
     
