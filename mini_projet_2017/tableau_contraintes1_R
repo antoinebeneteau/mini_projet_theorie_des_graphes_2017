@@ -1,0 +1,11 @@
+Traces d'execution du graphe: 
+
+-> Lecture du nombre de taches -> 7 sommets.
+-> Lecture des taches avec leurs durees respectives
+ * Tâche 1 -> Sommet: A
+ * Tâche 2 -> Sommet: B
+ * Tâche 3 -> Sommet: C
+ * Tâche 4 -> Sommet: D
+ * Tâche 5 -> Sommet: E
+ * Tâche 6 -> Sommet: F
+ * Tâche 7 -> Sommet: G
