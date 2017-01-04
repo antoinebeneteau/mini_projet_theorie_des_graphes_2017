@@ -65,8 +65,8 @@ void affichageListeContraintes(Graphe g) {
     
     for (int i = 0; i < g.obtenirNombreTaches(); i++)
     {
-        nombre_contraintes = g.getSommets()[i].ObtenirNombreContraintes();
-        nom_sommet = g.getSommets()[i].ObtenirNomSommet();
+        nombre_contraintes = g.ObtenirSommets()[i].ObtenirNombreContraintes();
+        nom_sommet = g.ObtenirSommets()[i].ObtenirNomSommet();
         
         if (nombre_contraintes == 0) // Aucune contrainte
         {
@@ -186,7 +186,7 @@ void affichageMatriceAdjacence(Graphe g) {
         }
         else
         {
-            cout << g.obtenirSommets()[i].getNomSommet() << "  ";
+            cout << g.ObtenirSommets()[i].ObtenirNomSommet() << "  ";
         }
     }
     
