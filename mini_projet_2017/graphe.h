@@ -65,6 +65,7 @@ private:
     vector<string> tab_taches;
     vector<int> tab_durees;
     vector<Sommet> tab_sommets;
+    vector<Arc> tab_arcs;
     
     bool **matrice_adjacence;
     bool **matrice_transitive;
@@ -79,12 +80,17 @@ public:
     
     // GET
     int getNombreTaches() const;
+    int getDuree(int i) const;
     
     // SET
     void setNombreTaches(int taches);
     
     // Principales
     Sommet definitionContraintes(string chaine, ofstream& fichier_resultat);
+    Arc definitionArc(int duree, string sommet, string predecesseur);
+    Sommet definitionSommetAlpha(string sommet, int nombre_contraintes, int nombre_successeurs, vector<string> liste_successeurs);
+    Sommet definitionSommetOmega(string sommet, int nombre_contraintes, int nombre_successeurs, vector<string> liste_contraintes);
+    
     void creationGrapheOrdonnancement(ofstream& fichier_resultat);
     void ajoutSommetsIncidents(ofstream& fichier_resultat);
     void definitionMatrices(ofstream& fichier_resultat);

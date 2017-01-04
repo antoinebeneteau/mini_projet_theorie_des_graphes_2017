@@ -70,11 +70,11 @@ int main(void)
                 Pause();
                 G1.creationGrapheOrdonnancement(fichier_resultat);
                 Pause();
-                //G1.ajoutSommetsIncidents(fichier_resultat);
+                G1.ajoutSommetsIncidents(fichier_resultat);
                 Pause();
-                //G1.definitionMatrices(fichier_resultat);
+                G1.definitionMatrices(fichier_resultat);
                 Pause();
-                //G1.FermetureTransitiveMatrice(fichier_resultat);
+                G1.FermetureTransitiveMatrice(fichier_resultat);
                 Pause();
                 
             }
