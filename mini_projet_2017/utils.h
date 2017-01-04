@@ -9,6 +9,22 @@
 #ifndef utils_h
 #define utils_h
 
-#include <stdio.h>
+#include <iostream>
+#include <vector>
+#include <fstream>
+#include <sstream>
+#include <map>
+#include <set>
+#include <string>
+#include <algorithm>
+#include <iomanip>
+
+using namespace std;
+
+
+// String -> Int
+int convStringVersInt(string flux);
+void Pause();
+
 
 #endif /* utils_h */

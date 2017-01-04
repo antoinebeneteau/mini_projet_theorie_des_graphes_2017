@@ -33,8 +33,12 @@
 		0095E40E1E1BE28E004DBABA /* menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = menu.h; sourceTree = "<group>"; };
 		0095E4101E1BE2B0004DBABA /* utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = utils.cpp; sourceTree = "<group>"; };
 		0095E4111E1BE2B0004DBABA /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
-		009CF0431E1BDD61004B64BD /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../main.cpp; sourceTree = "<group>"; };
-		009CF0451E1BDD9A004B64BD /* tableau_contraintes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = tableau_contraintes.txt; sourceTree = "<group>"; };
+		0095E4141E1C8096004DBABA /* tableau_contraintes1_R.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = tableau_contraintes1_R.txt; sourceTree = "<group>"; };
+		0095E4151E1C8096004DBABA /* tableau_contraintes2_R.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = tableau_contraintes2_R.txt; sourceTree = "<group>"; };
+		0095E4161E1C8096004DBABA /* tableau_contraintes3_R.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = tableau_contraintes3_R.txt; sourceTree = "<group>"; };
+		0095E4171E1C8096004DBABA /* tableau_contraintes4_R.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = tableau_contraintes4_R.txt; sourceTree = "<group>"; };
+		0095E4181E1C8096004DBABA /* tableau_contraintes5_R.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = tableau_contraintes5_R.txt; sourceTree = "<group>"; };
+		009CF0431E1BDD61004B64BD /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		009CF0461E1BDD9A004B64BD /* tableau_contraintes1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = tableau_contraintes1.txt; sourceTree = "<group>"; };
 		009CF0471E1BDD9A004B64BD /* tableau_contraintes2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = tableau_contraintes2.txt; sourceTree = "<group>"; };
 		009CF0481E1BDD9A004B64BD /* tableau_contraintes3.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = tableau_contraintes3.txt; sourceTree = "<group>"; };
@@ -80,14 +84,26 @@
 				0095E4101E1BE2B0004DBABA /* utils.cpp */,
 				0095E4111E1BE2B0004DBABA /* utils.h */,
 				009CF04B1E1BDDAA004B64BD /* Tableaux */,
+				0095E4131E1C8079004DBABA /* Tableaux Traces */,
 			);
 			path = mini_projet_2017;
+			sourceTree = "<group>";
+		};
+		0095E4131E1C8079004DBABA /* Tableaux Traces */ = {
+			isa = PBXGroup;
+			children = (
+				0095E4141E1C8096004DBABA /* tableau_contraintes1_R.txt */,
+				0095E4151E1C8096004DBABA /* tableau_contraintes2_R.txt */,
+				0095E4161E1C8096004DBABA /* tableau_contraintes3_R.txt */,
+				0095E4171E1C8096004DBABA /* tableau_contraintes4_R.txt */,
+				0095E4181E1C8096004DBABA /* tableau_contraintes5_R.txt */,
+			);
+			name = "Tableaux Traces";
 			sourceTree = "<group>";
 		};
 		009CF04B1E1BDDAA004B64BD /* Tableaux */ = {
 			isa = PBXGroup;
 			children = (
-				009CF0451E1BDD9A004B64BD /* tableau_contraintes.txt */,
 				009CF0461E1BDD9A004B64BD /* tableau_contraintes1.txt */,
 				009CF0471E1BDD9A004B64BD /* tableau_contraintes2.txt */,
 				009CF0481E1BDD9A004B64BD /* tableau_contraintes3.txt */,

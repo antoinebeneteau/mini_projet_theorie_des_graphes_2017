@@ -18,24 +18,78 @@
 
 using namespace std;
 
+class Sommet
+{
+private:
+    string sommet;
+    int nbr_contraintes;
+    int nbr_successeurs;
+    int rang;
+    vector<string> liste_contraintes;
+    vector<string> liste_successeurs;
+    
+public:
+    void ajoutContrainte(string sommet);
+    string getContrainte(int indice) const;
+    string getNomSommet() const;
+    void setNomSommet(string sommet);
+    void setRangSommet(int rang);
+    int getRangSommet() const;
+    int getNombreContraintes() const;
+    void setNombreContraintes(int nombre_contraintes);
+    string getSuccesseur(int indice) const;
+    void ajoutSuccesseur(string sommet);
+    void setNombreSuccesseurs(int nombre_successeurs);
+    int getNombreSuccesseurs() const;
+};
+
+class Arc
+{
+private:
+    string predecesseur;
+    string sommet;
+    int duree;
+    
+public:
+    void ajoutArc(string sommet, string contrainte);
+    void setDuree(int duree);
+    int getDuree() const;
+    string getNomSommet() const;
+    string getPredecesseur() const;
+};
 
 class Graphe
 {
 private:
     int taches;
-    vector<string> liste_taches;
+    vector<string> tab_taches;
+    vector<int> tab_durees;
+    vector<Sommet> tab_sommets;
     
     bool **matrice_adjacence;
     bool **matrice_transitive;
     int **matrice_valeurs;
     
 public:
-    Graphe(string nom_fichier);
     ~Graphe();
     
+    // Lecture Fichier
+    Graphe(string nom_fichier);
     int lectureFichierAvecContraintes(string nom_fichier, ofstream& fichier_resultat);
+    
+    // GET
     int getNombreTaches() const;
-    void setNombreTaches(int nombre_taches);
+    
+    // SET
+    void setNombreTaches(int taches);
+    
+    // Principales
+    Sommet definitionContraintes(string chaine, ofstream& fichier_resultat);
+    void creationGrapheOrdonnancement(ofstream& fichier_resultat);
+    void ajoutSommetsIncidents(ofstream& fichier_resultat);
+    void definitionMatrices(ofstream& fichier_resultat);
+    void FermetureTransitiveMatrice(ofstream& fichier_resultat);
+    
     
 };
 

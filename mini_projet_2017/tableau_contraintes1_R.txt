@@ -1,0 +1,29 @@
+Traces d'execution du graphe: 
+
+-> Lecture du nombre de taches -> 7 sommets.
+-> Lecture des taches avec leurs durees respectives
+ * Tâche 1 -> Sommet: A
+ * Tâche 2 -> Sommet: B
+ * Tâche 3 -> Sommet: C
+ * Tâche 4 -> Sommet: D
+ * Tâche 5 -> Sommet: E
+ * Tâche 6 -> Sommet: F
+ * Tâche 7 -> Sommet: G
+-> Lecture des contraintes
+ * Sommet A, aucune contrainte à ajouter.
+ * Sommet B, aucune contrainte à ajouter.
+ * Sommet C, ajout de 2 contraintes... 
+ -> Ajout de la contrainte A.
+ -> Ajout de la contrainte D.
+ * Sommet D, ajout de 2 contraintes... 
+ -> Ajout de la contrainte A.
+ -> Ajout de la contrainte B.
+ * Sommet E, ajout de 2 contraintes... 
+ -> Ajout de la contrainte C.
+ -> Ajout de la contrainte D.
+ * Sommet F, ajout d'une contrainte... 
+   -> Ajout de la contrainte E.
+
+ * Sommet G, ajout de 2 contraintes... 
+ -> Ajout de la contrainte B.
+ -> Ajout de la contrainte E.

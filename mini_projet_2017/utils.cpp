@@ -7,3 +7,25 @@
 //
 
 #include "utils.h"
+
+
+int convStringVersInt(string flux)
+{
+    int valeur;
+    
+    istringstream iss;
+    iss.str(flux);
+    iss >> valeur;
+    
+    return valeur;
+}
+
+void Pause()
+{
+    wcout << L"Appuyer sur entree pour continuer ";
+    cin.ignore().get(); // Cette commande de saisie sécurisée ordonne a l'utilisateur d'appuyer sur entrée (et seul entrée marche)
+    cout << endl;
+    
+    return;
+}
+
