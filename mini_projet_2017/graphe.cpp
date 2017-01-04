@@ -182,7 +182,7 @@ Graphe::Graphe(string nom_fichier)
     }
     else
     {
-        cout << "Erreur Fichier !" << endl;
+        cout << "Error !" << endl;
     }
 }
 
@@ -238,25 +238,25 @@ int Graphe::lectureFichierAvecContraintes(string nom_fichier, ofstream& fichier_
     
     ifstream fichier(nom_fichier.c_str());
     
-    cout << "Verification de l'existence du fichier : ";
+    cout << "Cherche le fichier... ";
     
     if ((fichier) && (fichier_resultat))
     {
-        cout << "OK" << endl;
+        cout << "Trouvé!" << endl;
         
-        fichier_resultat << "Traces d'execution du graphe: " << endl << endl;
+        fichier_resultat << "Traces d'execution :" << endl << endl;
         
         getline(fichier, chaine); // Sommets
         
         // Lire le nombre de tâches (1ère ligne du fichier)
         fichier >> taches;
         
-        cout << ">>> Étape 1: Lecture du nombre de taches -> " << taches << " sommets." << endl << endl;
-        fichier_resultat << "-> Lecture du nombre de taches -> " << taches << " sommets." << endl;
+        cout << ">>> Étape 1: Lecture du nombre de taches : " << taches << " sommets." << endl << endl;
+        fichier_resultat << "Lecture du nombre de taches " << taches << " sommets." << endl;
         
         getline(fichier, chaine); // Durees
-        cout << ">>> Étape 2: Lecture des taches avec leurs durees respectives et sauvegarde en memoire..." << endl << endl;
-        fichier_resultat << "-> Lecture des taches avec leurs durees respectives" << endl;
+        cout << ">>> Étape 2: Lecture des taches avec leurs durees respectives..." << endl << endl;
+        fichier_resultat << "Lecture des taches avec leurs durees respectives" << endl;
         
         // Lecture des tâches
         for (int i = 0; i <= taches; i++)
@@ -278,16 +278,16 @@ int Graphe::lectureFichierAvecContraintes(string nom_fichier, ofstream& fichier_
                 tab_taches.push_back(chaine.substr(0, 1));
                 tab_durees.push_back(duree);
                 
-                cout << ">>> Ajout de la tache " << i << " -> Sommet: ";
+                cout << ">>> Ajout de la tache " << i << "Sommet(s): ";
                 cout << chaine.substr(0, 1) << endl;
-                fichier_resultat << " * Tâche " << i << " -> Sommet: " << chaine.substr(0, 1) << endl;
+                fichier_resultat << " Tache " << i << "Sommet(s): " << chaine.substr(0, 1) << endl;
             }
         }
         
         Pause();
         
         getline(fichier, chaine); // La chaîne "Sommets + contraintes" est lue, on passe à la suite
-        wcout << L">>> Etape 3: Lecture des contraintes..." << endl << endl;
+        cout << ">>> Etape 3: Lecture des contraintes..." << endl << endl;
         fichier_resultat << "-> Lecture des contraintes" << endl;
         
         // Lecture des contraintes
@@ -310,7 +310,7 @@ int Graphe::lectureFichierAvecContraintes(string nom_fichier, ofstream& fichier_
     }
     else
     {
-        cout << "Erreur, le fichier n'existe pas !" << endl;
+        cout << "Error, no file !" << endl;
         return 0;
     }
     
@@ -329,8 +329,8 @@ Sommet Graphe::definitionContraintes(string chaine, ofstream& fichier_resultat)
         // Ajout du nombre de contraintes du sommet dans l'instance: ici 0
         S.setNombreContraintes(chaine.length() - 1);
         
-        cout << " * Sommet " << chaine.substr(0, 1) << ", ";
-        wcout << L"aucune contrainte à ajouter." << endl;
+        cout << "Sommet " << chaine.substr(0, 1) << ", ";
+        cout << L"Il y a donc aucune contrainte à ajouter." << endl;
         
         fichier_resultat << " * Sommet " << chaine.substr(0, 1) << ", aucune contrainte à ajouter." << endl;
     }
@@ -339,12 +339,12 @@ Sommet Graphe::definitionContraintes(string chaine, ofstream& fichier_resultat)
         // Ajout du nombre de contraintes du sommet dans l'instance: ici 1
         S.setNombreContraintes(chaine.length() - 2);
         
-        cout << " * Sommet " << chaine.substr(0, 1) << ", ajout d'une contrainte... " << endl;
-        cout << " -> Ajout de la contrainte " << chaine.substr(2, 1) << "." << endl << endl;
+        cout << " Sommet " << chaine.substr(0, 1) << ", ajout de la contrainte... " << endl;
+        cout << "Ajout de la contrainte " << chaine.substr(2, 1) << "." << endl << endl;
         S.ajoutContrainte(chaine.substr(2, 1));
         
-        fichier_resultat << " * Sommet " << chaine.substr(0, 1) << ", ajout d'une contrainte... " << endl;
-        fichier_resultat << "   -> Ajout de la contrainte " << chaine.substr(2, 1) << "." << endl << endl;
+        fichier_resultat << " Sommet " << chaine.substr(0, 1) << ", ajout d'une contrainte... " << endl;
+        fichier_resultat << " Ajout de la contrainte... " << chaine.substr(2, 1) << "." << endl << endl;
     }
     else // 2 contraintes ou plus
     {
@@ -353,13 +353,13 @@ Sommet Graphe::definitionContraintes(string chaine, ofstream& fichier_resultat)
         // Ajout du nombre de contraintes du sommet dans l'instance: 2 ou plus
         S.setNombreContraintes(contraintes);
         
-        cout << " * Sommet " << chaine.substr(0, 1) << ", ajout de " << contraintes << " contraintes... " << endl;
-        fichier_resultat << " * Sommet " << chaine.substr(0, 1) << ", ajout de " << contraintes << " contraintes... " << endl;
+        cout << "Sommet " << chaine.substr(0, 1) << ", ajout de " << contraintes << " contrainte(s)... " << endl;
+        fichier_resultat << " * Sommet " << chaine.substr(0, 1) << ", ajout de " << contraintes << " contrainte(s)... " << endl;
         
         for (int i = 2; i < (contraintes + 2); i++)
         {
-            cout << " -> Ajout de la contrainte " << chaine.substr(i, 1) << "." << endl;
-            fichier_resultat << " -> Ajout de la contrainte " << chaine.substr(i, 1) << "." << endl;
+            cout << " Ajout de la contrainte... " << chaine.substr(i, 1) << "." << endl;
+            fichier_resultat << " Ajout de la contrainte... " << chaine.substr(i, 1) << "." << endl;
             S.ajoutContrainte(chaine.substr(i, 1));
         }
         
@@ -379,22 +379,22 @@ void Graphe::creationGrapheOrdonnancement(ofstream& fichier_resultat) {
     
     if (fichier_resultat)
     {
-        cout << ">>> Étape 4: Création du graphe..." << endl << endl;
-        cout << ">>> Propriétés du graphe:" << endl;
-        cout << " * Nombre de sommets: " << this->getNombreTaches() + 2 << " (" << this->getNombreTaches() << " + 2 sommets incidents a et z)" << endl; // Il faut inclure les sommets incidents
-        cout << " * Graphe orienté." << endl;
+        cout << "Création du graphe..." << endl << endl;
+        cout << "Propriétés du graphe:" << endl;
+        cout << "Nombre de sommet(s): " << this->getNombreTaches() + 2 << " (" << this->getNombreTaches() << " + 2 sommets incidents a et z)" << endl; // Il faut inclure les sommets incidents
+//        cout << " * Graphe orienté." << endl;
         cout << " * 1 valeur numérique (durée) pour chaque arc." << endl;
-        cout << " * Maximum 1 arc d'un sommet X vers un sommet Y donné." << endl << endl;
+        cout << " Maximum 1 arc d'un sommet X vers un sommet Y donné." << endl << endl;
         
-        cout << ">>> Étape 5: Création des arcs associés aux contraintes de type \"X ne peut commencer lorsque la tâche Y est terminée\"..." << endl;
+        cout << "--> Création des arcs associés aux contraintes de type \"X ne peut commencer lorsque la tâche Y est terminée\"." << endl;
         
-        fichier_resultat << "-> Création du graphe..." << endl;
-        fichier_resultat << "-> Propriétés du graphe:" << endl;
-        fichier_resultat << " * Nombre de sommets: " << this->getNombreTaches() + 2 << " (" << this->getNombreTaches() << " + 2 sommets incidents a et z)" << endl; // Il faut inclure les sommets incidents
-        fichier_resultat << " * Graphe orienté." << endl;
-        fichier_resultat << " * 1 valeur numérique (durée) pour chaque arc." << endl;
-        fichier_resultat << " * Maximum 1 arc d'un sommet X vers un sommet Y donné." << endl << endl;
-        fichier_resultat << "-> Création des arcs associés aux contraintes de type \"X ne peut commencer lorsque la tâche Y est terminée\"..." << endl;
+        fichier_resultat << "--> Création du graphe..." << endl;
+        fichier_resultat << "--> Propriétés du graphe:" << endl;
+        fichier_resultat << " - Nombre de sommets: " << this->getNombreTaches() + 2 << " (" << this->getNombreTaches() << " + 2 sommets incidents a et z)" << endl; // Il faut inclure les sommets incidents
+        fichier_resultat << " - Graphe orienté." << endl;
+        fichier_resultat << " - 1 valeur numérique (durée) pour chaque arc." << endl;
+        fichier_resultat << " - Maximum 1 arc d'un sommet X vers un sommet Y donné." << endl << endl;
+        fichier_resultat << "--> Création des arcs associés aux contraintes de type \"X ne peut commencer lorsque la tâche Y est terminée\"..." << endl;
         
         // Ajout des arcs
         
@@ -405,14 +405,14 @@ void Graphe::creationGrapheOrdonnancement(ofstream& fichier_resultat) {
         system("clear");
         
         // Ajout des successeurs pour chaque arc
-        wcout << L">>> Étape 6: Identification des successeurs de chaque sommet..." << endl;
+        cout << "--> Identification des successeurs de chaques sommets" << endl;
         fichier_resultat << "-> Identification des successeurs de chaque sommet..." << endl;
         
         for (int i = 0; i < taches; i++)
         {
             sommet_actuel = tab_sommets[i].getNomSommet();
-            cout << " * Sommet " << sommet_actuel << ": ";
-            fichier_resultat << " * Sommet " << sommet_actuel << ": ";
+            cout << " sommets " << sommet_actuel << ": ";
+            fichier_resultat << " sommets " << sommet_actuel << ": ";
             nombre_successeurs = 0;
             
             for (int j = 0; j < taches; j++)
@@ -438,14 +438,14 @@ void Graphe::creationGrapheOrdonnancement(ofstream& fichier_resultat) {
             
             if (nombre_successeurs == 0)
             {
-                cout << "aucun successeur." << endl;
-                fichier_resultat << "aucun successeur." << endl;
+                cout << "Pas de successeurs." << endl;
+                fichier_resultat << "Pas de successeurs." << endl;
                 
             }
             else
             {
-                cout << " -> Successeurs: " << nombre_successeurs << endl;
-                fichier_resultat << " -> Successeurs: " << nombre_successeurs << endl;
+                cout << " - Successeurs: " << nombre_successeurs << endl;
+                fichier_resultat << " - Successeurs: " << nombre_successeurs << endl;
             }
             
             cout << endl;

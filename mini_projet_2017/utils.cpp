@@ -22,7 +22,7 @@ int convStringVersInt(string flux)
 
 void Pause()
 {
-    wcout << L"Appuyer sur entree pour continuer ";
+    cout << "Appuyer pour continuer ...";
     cin.ignore().get(); // Cette commande de saisie sécurisée ordonne a l'utilisateur d'appuyer sur entrée (et seul entrée marche)
     cout << endl;
     
