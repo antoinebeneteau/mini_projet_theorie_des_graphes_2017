@@ -62,48 +62,52 @@ class Graphe
 {
 private:
     int taches;
-    int puissance_fermeture_transitive;
-    bool circuit;
+    int puissance;
+    bool estUnCircuit;
     
+    // Tableaux
+    vector<string> tabTaches;
+    vector<int> tabDurees;
+    vector<Sommet> tabSommets;
+    vector<Arc> tabArcs;
     
-    vector<string> tab_taches;
-    vector<int> tab_durees;
-    vector<Sommet> tab_sommets;
-    vector<Arc> tab_arcs;
+    // Matrices
+    bool** matriceAdjacence;
+    int** matriceValeurs;
+    bool** matriceTransitive;
     
-    bool **matrice_adjacence;
-    bool **matrice_transitive;
-    int **matrice_valeurs;
-    
+    // Tableaux dictionaire
     map<string, int> rangs_sommets;
     map<string, int> dates_plus_tot;
     map<string, int> dates_plus_tard;
     
 public:
+    // Destructeur
     ~Graphe();
     
     // Lecture Fichier
-    Graphe(string nom_fichier);
+    Graphe(string nom_fichier); // Constructeur
+    
     int lectureFichierAvecContraintes(string nom_fichier, ofstream& fichier_resultat);
     
     // GET
-    int getNombreTaches() const;
-    vector<string> getTaches() const;
-    vector<Sommet> getSommets() const;
-    vector<Arc> getArcs() const;
-    vector<int> getDurees() const;
-    int getPuissance() const;
-    int getDuree(int i) const;
-    bool isCircuit() const;
-    bool** getMatriceAdjacence() const;
-    int** getMatriceValeurs() const;
-    bool** getMatriceTransitive() const;
-    map<string, int> getRangsSommets() const;
-    map<string, int> getDateTot() const;
-    map<string, int> getDateTard() const;
+    int obtenirNombreTaches() const;
+    vector<string> obtenirTaches() const;
+    vector<Sommet> obtenirSommets() const;
+    vector<Arc> obtenirArcs() const;
+    vector<int> obtenirDurees() const;
+    int obtenirPuissance() const;
+    int obtenirDuree(int i) const;
+    bool estCircuit() const;
+    bool** obtenirMatriceAdjacence() const;
+    int** obtenirMatriceValeurs() const;
+    bool** obtenirMatriceTransitive() const;
+    map<string, int> obtenirRangsSommets() const;
+    map<string, int> obtenirDateTot() const;
+    map<string, int> obtenirDateTard() const;
     
     // SET
-    void setNombreTaches(int taches);
+    void definirNombreTaches(int taches);
     
     // Principales
     Sommet definitionContraintes(string chaine, ofstream& fichier_resultat);

@@ -30,10 +30,8 @@ int main(void)
     fichiers_R[5] = "/Users/antoinebeneteau/Documents/mini_projet_2017/mini_projet_2017/tableau_contraintes5_R.txt";
 
     
-    int choix = 0, fichier_choisi = 0, option = 0;
-    bool check = false;
+    int choix = 0;
     string nom_fichier, nom_fichier_resultat;
-    
     
     do {
         
@@ -81,7 +79,7 @@ int main(void)
                 
                 choix = 11111;
                 while (choix != 0) {
-                    choix = menu3(graphe.isCircuit());
+                    choix = menu3(graphe.estCircuit());
                     
                     if (choix == 1) {
                         // Affichage taches
@@ -103,7 +101,7 @@ int main(void)
                         affichageMatriceValeur(graphe);
                     } else if (choix == 7) {
                         // Affichage Matrice puissance
-                        graphe.affichageMatriceAdjacencePuissance(graphe.getPuissance(), true, fichier_resultat);
+                        graphe.affichageMatriceAdjacencePuissance(graphe.obtenirPuissance(), true, fichier_resultat);
                     } else if (choix == 8) {
                         // Affichage rangs sommet
                         cout << "Pas fait" << endl;

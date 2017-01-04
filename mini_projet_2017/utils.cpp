@@ -43,12 +43,12 @@ void Pause()
 void affichageListeTaches(Graphe g) {
     cout << ">>> Liste des tâches: " << endl << endl;
     // Lecture des tâches
-    for (int i = 0; i < g.getNombreTaches(); i++)
+    for (int i = 0; i < g.obtenirNombreTaches(); i++)
     {
         wcout << L">>> Tâche " << (i + 1) << " -> Sommet: ";
-        cout << g.getTaches()[i] << ", ";
+        cout << g.obtenirTaches()[i] << ", ";
         wcout << L"durée: ";
-        cout << g.getDurees()[i] << endl;
+        cout << g.obtenirDurees()[i] << endl;
     }
     
     cout << endl;
@@ -63,10 +63,10 @@ void affichageListeContraintes(Graphe g) {
     
     cout << ">>> Liste des contraintes: " << endl << endl;
     
-    for (int i = 0; i < g.getNombreTaches(); i++)
+    for (int i = 0; i < g.obtenirNombreTaches(); i++)
     {
-        nombre_contraintes = g.getSommets()[i].getNombreContraintes();
-        nom_sommet = g.getSommets()[i].getNomSommet();
+        nombre_contraintes = g.obtenirSommets()[i].getNombreContraintes();
+        nom_sommet = g.obtenirSommets()[i].getNomSommet();
         
         if (nombre_contraintes == 0) // Aucune contrainte
         {
@@ -87,20 +87,20 @@ void affichageListeContraintes(Graphe g) {
             
             cout << " * " << nom_sommet;
             wcout << L" ne peut commencer que lorsque la tâche ";
-            cout << g.getSommets()[i].getContrainte(0); // Tableau d'une valeur = premier indice
+            cout << g.obtenirSommets()[i].getContrainte(0); // Tableau d'une valeur = premier indice
             wcout << L" est terminée." << endl << endl;
         }
         else // 2 contraintes ou plus
         {
-            cout << ">>> Sommet " << nom_sommet << ": " << g.getSommets()[i].getNombreContraintes() << " contraintes." << endl;
+            cout << ">>> Sommet " << nom_sommet << ": " << g.obtenirSommets()[i].getNombreContraintes() << " contraintes." << endl;
             
-            if (g.getSommets()[i].getNombreContraintes() >= 1)
+            if (g.obtenirSommets()[i].getNombreContraintes() >= 1)
             {
-                for (int j = 0; j < g.getSommets()[i].getNombreContraintes(); j++)
+                for (int j = 0; j < g.obtenirSommets()[i].getNombreContraintes(); j++)
                 {
                     cout << " * " << nom_sommet;
                     wcout << L" ne peut commencer que lorsque la tâche ";
-                    cout << g.getSommets()[i].getContrainte(j);
+                    cout << g.obtenirSommets()[i].getContrainte(j);
                     wcout << L" est terminée." << endl;
                 }
             }
@@ -119,10 +119,10 @@ void affichageListeSuccesseurs(Graphe g) {
     
     cout << ">>> Liste des successeurs de chaque sommet: " << endl << endl;
     
-    for (int i = 0; i < g.getNombreTaches(); i++)
+    for (int i = 0; i < g.obtenirNombreTaches(); i++)
     {
-        nombre_successeurs = g.getSommets()[i].getNombreSuccesseurs();
-        nom_sommet = g.getSommets()[i].getNomSommet();
+        nombre_successeurs = g.obtenirSommets()[i].getNombreSuccesseurs();
+        nom_sommet = g.obtenirSommets()[i].getNomSommet();
         
         if (nombre_successeurs == 0) // Aucune contrainte
         {
@@ -137,23 +137,23 @@ void affichageListeSuccesseurs(Graphe g) {
         }
         else if (nombre_successeurs == 1) // 1 contrainte
         {
-            cout << ">>> Sommet " << nom_sommet << ": 1 successeur -> " << g.getSommets()[i].getSuccesseur(0) << endl;
+            cout << ">>> Sommet " << nom_sommet << ": 1 successeur -> " << g.obtenirSommets()[i].getSuccesseur(0) << endl;
         }
         else // 2 contraintes ou plus
         {
-            cout << ">>> Sommet " << nom_sommet << ": " << g.getSommets()[i].getNombreSuccesseurs() << " successeurs -> ";
+            cout << ">>> Sommet " << nom_sommet << ": " << g.obtenirSommets()[i].getNombreSuccesseurs() << " successeurs -> ";
             
-            if (g.getSommets()[i].getNombreSuccesseurs() >= 1)
+            if (g.obtenirSommets()[i].getNombreSuccesseurs() >= 1)
             {
                 for (int j = 0; j < nombre_successeurs; j++)
                 {
                     if (j < nombre_successeurs - 1)
                     {
-                        cout << g.getSommets()[i].getSuccesseur(j) << ", ";
+                        cout << g.obtenirSommets()[i].getSuccesseur(j) << ", ";
                     }
                     else
                     {
-                        cout << g.getSommets()[i].getSuccesseur(j) << endl;
+                        cout << g.obtenirSommets()[i].getSuccesseur(j) << endl;
                     }
                 }
             }
@@ -167,9 +167,9 @@ void affichageListeArcs(Graphe g) {
     cout << ">>> Liste des arcs: " << endl << endl;
     
     // Vérification des arcs alloués en mémoire
-    for (int i = 0; i < g.getArcs().size(); i++)
+    for (int i = 0; i < g.obtenirArcs().size(); i++)
     {
-        cout << g.getArcs()[i].getPredecesseur() << " --[" << g.getArcs()[i].getDuree() << "]--> " << g.getArcs()[i].getNomSommet() << endl;
+        cout << g.obtenirArcs()[i].getPredecesseur() << " --[" << g.obtenirArcs()[i].getDuree() << "]--> " << g.obtenirArcs()[i].getNomSommet() << endl;
     }
 }
 
@@ -178,28 +178,28 @@ void affichageMatriceAdjacence(Graphe g) {
     
     cout << ">>> Matrice d'adjacence: " << endl << endl;
     
-    for (int i = 0; i < g.getNombreTaches(); i++)
+    for (int i = 0; i < g.obtenirNombreTaches(); i++)
     {
         if (i == 0)
         {
-            cout << "    " << g.getSommets()[i].getNomSommet() << "  ";
+            cout << "    " << g.obtenirSommets()[i].getNomSommet() << "  ";
         }
         else
         {
-            cout << g.getSommets()[i].getNomSommet() << "  ";
+            cout << g.obtenirSommets()[i].getNomSommet() << "  ";
         }
     }
     
     cout << endl;
     
     // Affichage du contenu de la matrice
-    for (int i = 0; i < g.getNombreTaches(); i++)
+    for (int i = 0; i < g.obtenirNombreTaches(); i++)
     {
-        cout << g.getSommets()[i].getNomSommet() << "   ";
+        cout << g.obtenirSommets()[i].getNomSommet() << "   ";
         
-        for (int j = 0; j < g.getNombreTaches(); j++)
+        for (int j = 0; j < g.obtenirNombreTaches(); j++)
         {
-            if (g.getMatriceAdjacence()[i][j])
+            if (g.obtenirMatriceAdjacence()[i][j])
             {
                 cout << "1  ";
             }
@@ -220,34 +220,34 @@ void affichageMatriceValeur(Graphe g) {
     
     cout << ">>> Matrice des valeurs: " << endl << endl;
     
-    for (int i = 0; i < g.getNombreTaches(); i++)
+    for (int i = 0; i < g.obtenirNombreTaches(); i++)
     {
         if (i == 0)
         {
-            cout << "    " << g.getSommets()[i].getNomSommet() << "  ";
+            cout << "    " << g.obtenirSommets()[i].getNomSommet() << "  ";
         }
         else
         {
-            cout << g.getSommets()[i].getNomSommet() << "  ";
+            cout << g.obtenirSommets()[i].getNomSommet() << "  ";
         }
     }
     
     cout << endl;
     
     // Affichage du contenu de la matrice
-    for (int i = 0; i < g.getNombreTaches(); i++)
+    for (int i = 0; i < g.obtenirNombreTaches(); i++)
     {
-        cout << g.getSommets()[i].getNomSommet() << "   ";
+        cout << g.obtenirSommets()[i].getNomSommet() << "   ";
         
-        for (int j = 0; j < g.getNombreTaches(); j++)
+        for (int j = 0; j < g.obtenirNombreTaches(); j++)
         {
-            if (g.getMatriceValeurs()[i][j] == -1)
+            if (g.obtenirMatriceValeurs()[i][j] == -1)
             {
                 cout << "   ";
             }
             else
             {
-                cout << g.getMatriceValeurs()[i][j] << "  ";
+                cout << g.obtenirMatriceValeurs()[i][j] << "  ";
             }
         }
         
@@ -262,28 +262,28 @@ void affichageMatriceTransitive(Graphe g) {
     
     cout << ">>> Matrice transitive: " << endl << endl;
     
-    for (int i = 0; i < g.getNombreTaches(); i++)
+    for (int i = 0; i < g.obtenirNombreTaches(); i++)
     {
         if (i == 0)
         {
-            cout << "    " << g.getSommets()[i].getNomSommet() << "  ";
+            cout << "    " << g.obtenirSommets()[i].getNomSommet() << "  ";
         }
         else
         {
-            cout << g.getSommets()[i].getNomSommet() << "  ";
+            cout << g.obtenirSommets()[i].getNomSommet() << "  ";
         }
     }
     
     cout << endl;
     
     // Affichage du contenu de la matrice
-    for (int i = 0; i < g.getNombreTaches(); i++)
+    for (int i = 0; i < g.obtenirNombreTaches(); i++)
     {
-        cout << g.getSommets()[i].getNomSommet() << "   ";
+        cout << g.obtenirSommets()[i].getNomSommet() << "   ";
         
-        for (int j = 0; j < g.getNombreTaches(); j++)
+        for (int j = 0; j < g.obtenirNombreTaches(); j++)
         {
-            if (g.getMatriceTransitive()[i][j])
+            if (g.obtenirMatriceTransitive()[i][j])
             {
                 cout << "1  ";
             }
